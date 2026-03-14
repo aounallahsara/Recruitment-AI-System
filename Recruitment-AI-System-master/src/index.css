@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.dark img,
+html.dark video,
+html.dark svg,
+html.dark [class*="bg-blue"],
+html.dark [class*="bg-green"],
+html.dark [class*="bg-red"],
+html.dark [class*="bg-yellow"] {
+  filter: invert(1) hue-rotate(180deg);
+}
