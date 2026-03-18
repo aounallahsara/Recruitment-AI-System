@@ -321,6 +321,15 @@ function CandidatureForm() {
                 <option value="Master 1">Master 1</option>
                 <option value="Master 2">Master 2</option>
                 <option value="Doctorat">Doctorat</option>
+                <option value="Ingénieur 1">Ingénieur 1</option> 
+                <option value="Ingénieur 2">Ingénieur 2</option>
+                <option value="Ingénieur 3">Ingénieur 3</option>
+                <option value="Ingénieur 4">Ingénieur 4</option>
+                <option value="Ingénieur 5">Ingénieur 5 </option>
+                
+                
+                
+
               </select>
             </div>
 
