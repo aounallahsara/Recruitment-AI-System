@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // ⚠️ IMPORTANT : Change cette URL quand ton équipe backend te donnera l'adresse réelle
-const API_BASE_URL = 'http://localhost:8000/api'
+const API_BASE_URL = 'http://127.0.0.1:8000/api'
 
 // Création de l'instance Axios avec la configuration de base
 const api = axios.create({
