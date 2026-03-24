@@ -6,7 +6,7 @@ import CandidateDetailsPage from '../components/dashboard/CandidateDetailsPage'
 import { getCandidatures } from '../services/dashboardService'
 import { logout } from '../utils/auth'
 import { getUserRole } from '../utils/auth';
-
+import { exportToExcel } from '../utils/excelExport'
 function DashboardRH() {
   const navigate = useNavigate()
   const [candidates, setCandidates] = useState([])
@@ -17,6 +17,10 @@ function DashboardRH() {
   useEffect(() => {
     loadCandidates()
   }, [])
+  const handleExportExcel = () => {
+  exportToExcel(candidates)
+}
+
 
   const loadCandidates = async () => {
     try {
@@ -41,7 +45,7 @@ function DashboardRH() {
   const calculateStats = () => {
     return {
       total: candidates.length,
-      pending: candidates.filter(c => c.statut === 'Pending').length,
+      
       preselected: candidates.filter(c => c.statut === 'Preselected').length,
       selected: candidates.filter(c => c.statut === 'Selected').length,
       rejected: candidates.filter(c => c.statut === 'Rejected').length,
@@ -78,7 +82,9 @@ function DashboardRH() {
         </nav>
 
         <div className="px-4 mt-8">
-          <h3 className="text-sm font-semibold text-gray-500 px-4 mb-2">SYSTEM</h3>
+          <h3 
+          onClick={() => navigate('/settings')} 
+          className="text-sm font-semibold text-gray-500 px-4 mb-2">SYSTEM</h3>
           <button 
             onClick={handleLogout}
             className="w-full text-left px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg"
@@ -98,6 +104,16 @@ function DashboardRH() {
           <div className="bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold">
             👤 RH
           </div>
+          <button
+    onClick={handleExportExcel}
+    className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition font-medium flex items-center gap-2"
+  >
+    <span className="text-xl">📊</span>
+    Exporter Excel
+  </button>
+
+
+
         </div>
         
         {loading ? (

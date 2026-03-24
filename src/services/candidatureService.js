@@ -18,3 +18,18 @@ export const submitCandidature = async (formData) => {
     throw error  // On relance l'erreur pour que le composant puisse la gérer
   }
 }
+
+
+export const createCandidature = async (formData) => {
+  try {
+    const response = await api.post('/candidatures/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error('Erreur création candidature:', error)
+    throw error
+  }
+}

@@ -56,7 +56,7 @@ function DashboardPage() {
   const calculateStats = () => {
     return {
       total: candidates.length,
-      pending: candidates.filter(c => c.statut === 'Pending').length,
+      
       preselected: candidates.filter(c => c.statut === 'Preselected').length,
       selected: candidates.filter(c => c.statut === 'Selected').length,
       rejected: candidates.filter(c => c.statut === 'Rejected').length,
@@ -137,8 +137,7 @@ function CandidateDetailsPage({ candidate, onBack }) {
         return 'bg-green-100 text-green-700'
       case 'Preselected':
         return 'bg-indigo-100 text-indigo-700'
-      case 'Pending':
-        return 'bg-yellow-100 text-yellow-700'
+      
       case 'Rejected':
         return 'bg-red-100 text-red-700'
       default:
@@ -147,7 +146,7 @@ function CandidateDetailsPage({ candidate, onBack }) {
   }
 
   const getGenreIcon = (genre) => {
-    return genre === 'Masculin' ? '👨' : '👩'
+    return genre === 'Masculin' ? '' : ''
   }
 
   return (

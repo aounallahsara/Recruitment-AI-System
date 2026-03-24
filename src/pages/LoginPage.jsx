@@ -44,7 +44,7 @@ function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Connexion RH</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Connexion </h2>
         
         {error && (
           <div className="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
