@@ -11,8 +11,6 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
         return 'bg-green-100 text-green-700'
       case 'Preselected':
         return 'bg-indigo-100 text-indigo-700'
-      case 'Pending':
-        return 'bg-yellow-100 text-yellow-700'
       case 'Rejected':
         return 'bg-red-100 text-red-700'
       default:

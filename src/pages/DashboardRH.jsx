@@ -41,7 +41,6 @@ function DashboardRH() {
   const calculateStats = () => {
     return {
       total: candidates.length,
-      pending: candidates.filter(c => c.statut === 'Pending').length,
       preselected: candidates.filter(c => c.statut === 'Preselected').length,
       selected: candidates.filter(c => c.statut === 'Selected').length,
       rejected: candidates.filter(c => c.statut === 'Rejected').length,

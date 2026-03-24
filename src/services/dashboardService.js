@@ -81,7 +81,7 @@ const MOCK_DATA = [
     cv: true,
     lettre_motivation: true,
     releve_notes: true,
-    statut: 'Pending'
+    statut: 'Rejected'
   },
   {
     id: 4,
@@ -107,7 +107,7 @@ const MOCK_DATA = [
     cv: true,
     lettre_motivation: true,
     releve_notes: true,
-    statut: 'Pending'
+    statut: 'Selected'
   },
   {
     id: 5,

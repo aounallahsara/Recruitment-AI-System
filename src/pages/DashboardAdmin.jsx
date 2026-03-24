@@ -36,11 +36,10 @@ function DashboardAdmin() {
   const handleViewDetails = (candidate) => {
     setSelectedCandidate(candidate)
   }
-
+ 
   const calculateStats = () => {
     return {
-      total: candidates.length,
-      pending: candidates.filter(c => c.statut === 'Pending').length,
+      total: candidates.length,      
       preselected: candidates.filter(c => c.statut === 'Preselected').length,
       selected: candidates.filter(c => c.statut === 'Selected').length,
       rejected: candidates.filter(c => c.statut === 'Rejected').length,

@@ -7,11 +7,11 @@ function Statistics({ stats }) {
         <p className="text-xs text-gray-500 mt-1">All this week</p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg border-t-4 border-yellow-500 shadow">
+      {/* <div className="bg-white p-6 rounded-lg border-t-4 border-yellow-500 shadow">
         <h3 className="text-gray-600 text-sm font-medium">Pending Review</h3>
         <p className="text-3xl font-bold text-gray-900 mt-2">{stats.pending}</p>
         <p className="text-xs text-gray-500 mt-1">Pending review</p>
-      </div>
+      </div> */}
 
       <div className="bg-white p-6 rounded-lg border-t-4 border-indigo-500 shadow">
         <h3 className="text-gray-600 text-sm font-medium">Preselected</h3>

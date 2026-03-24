@@ -14,33 +14,19 @@ function LoginPage() {
     setIsLoading(true)
 
     try {
-      // --- LOGIQUE DE TEST ---
-      if (credentials.username === 'admin' && credentials.password === 'admin') {
-        localStorage.setItem('token', 'fake-admin-token')
-        localStorage.setItem('userRole', 'admin')
-        navigate('/dashboard')
-      } else if (credentials.username === 'rh' && credentials.password === 'rh') {
-        localStorage.setItem('token', 'fake-rh-token')
-        localStorage.setItem('userRole', 'rh')
-        navigate('/dashboard')
-      } else {
-        // --- LOGIQUE API (Décommenter quand le backend est prêt) ---
-        /*
-        const response = await api.post('/auth/login/', credentials)
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('userRole', response.data.user.role)
-        navigate('/dashboard')
-        */
-        setError('Identifiants incorrects')
-      }
+      
+      const response = await api.post('/auth/login/', credentials)
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('userRole', response.data.user.role)
+      navigate('/dashboard')
+
     } catch (err) {
-      setError('Une erreur est survenue lors de la connexion')
+      setError('Identifiants incorrects. Veuillez réessayer.')
     } finally {
       setIsLoading(false)
     }
   }
 
-  // Le return doit toujours être à la toute fin de la fonction
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
