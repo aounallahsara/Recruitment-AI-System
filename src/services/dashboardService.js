@@ -81,7 +81,9 @@ const MOCK_DATA = [
     cv: true,
     lettre_motivation: true,
     releve_notes: true,
-    statut: 'Rejected'
+
+    statut: 'Preselected'
+
   },
   {
     id: 4,
@@ -107,7 +109,11 @@ const MOCK_DATA = [
     cv: true,
     lettre_motivation: true,
     releve_notes: true,
+
     statut: 'Selected'
+
+   
+
   },
   {
     id: 5,

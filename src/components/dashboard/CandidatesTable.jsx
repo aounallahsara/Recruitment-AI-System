@@ -36,7 +36,7 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
   })
 
   const uniqueDomains = ['All Domains', ...new Set(candidates.map(c => c.domaine))]
-  const uniqueStatuses = ['All Statuses', 'Selected', 'Preselected', 'Pending', 'Rejected']
+  const uniqueStatuses = ['All Statuses', 'Selected', 'Preselected', 'Rejected']
 
   return (
     <div className="bg-white rounded-lg shadow">

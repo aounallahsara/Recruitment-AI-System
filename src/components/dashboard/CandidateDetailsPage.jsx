@@ -17,7 +17,7 @@ function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
   }
 
   const getGenreIcon = (genre) => {
-    return genre === 'Masculin' ? '👨' : '👩'
+    return genre === 'Masculin' ? '' : ''
   }
 
   return (
