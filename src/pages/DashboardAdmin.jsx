@@ -56,6 +56,10 @@ function DashboardAdmin() {
     logout()
     navigate('/login')
   }
+  const handleUpdateCandidate = async () => {
+  await loadCandidates()  // Recharge toutes les données
+  setSelectedCandidate(null)  // Retourne au dashboard
+}
 
   const handleViewDetails = (candidate) => {
     setSelectedCandidate(candidate)
@@ -67,27 +71,28 @@ function DashboardAdmin() {
 
   // Rendu conditionnel - Formulaire d'ajout
   if (showAddForm) {
-    return (
-      <AdminAddCandidate 
-        onBack={() => setShowAddForm(false)}
-        onSuccess={() => {
-          loadCandidates()
-          setShowAddForm(false)
-        }}
-      />
-    )
-  }
+  return (
+    <AdminAddCandidate 
+      onBack={() => setShowAddForm(false)}
+      onSuccess={() => {
+        loadCandidates()    // ← recharge les données
+        setShowAddForm(false) // ← retourne au dashboard
+      }}
+    />
+  )
+}
 
   // Rendu conditionnel - Détails candidat
-  if (selectedCandidate) {
-    return (
-      <CandidateDetailsPage 
-        candidate={selectedCandidate} 
-        onBack={() => setSelectedCandidate(null)} 
-        isAdmin={true} 
-      />
-    )
-  }
+ if (selectedCandidate) {
+  return (
+    <CandidateDetailsPage 
+      candidate={selectedCandidate} 
+      onBack={() => setSelectedCandidate(null)}
+      onUpdate={handleUpdateCandidate}  // ← Ajoute ça
+      isAdmin={true} 
+    />
+  )
+}
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -158,16 +163,10 @@ function DashboardAdmin() {
               <span className="text-xl">+</span>
               Ajouter une candidature
             </button>
-         error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
           </div>
-        )}
-
+        </div>
+        
         {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            <p className="text-gray-600 mt-2">Chargement des candidatures
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
             <p className="text-gray-600 mt-2">Chargement...</p>

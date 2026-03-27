@@ -86,17 +86,7 @@ def update_statut(request, pk):
 
     nouveau_statut = request.data.get('statut_nom')
 
-    if nouveau_statut == 'Rejected':
-        for document in candidature.documents.all():
-            if document.fichier:
-                if os.path.isfile(document.fichier.path):
-                    os.remove(document.fichier.path)
-        candidature.delete()
-        return Response(
-            {'message': 'Candidature rejetée et supprimée.'},
-            status=status.HTTP_200_OK
-        )
-
+    # ── Mise à jour du statut (sans suppression) ──────────
     serializer = CandidatureUpdateStatutSerializer(
         candidature, data=request.data, partial=True
     )
@@ -107,8 +97,10 @@ def update_statut(request, pk):
                 candidature, context={'request': request}
             ).data
         )
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    return Response(
+        serializer.errors,
+        status=status.HTTP_400_BAD_REQUEST
+    )
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

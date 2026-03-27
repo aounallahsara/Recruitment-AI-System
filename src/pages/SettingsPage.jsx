@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUserRole } from '../utils/auth'
 
+ import api from '../services/api'
 function SettingsPage() {
   const navigate = useNavigate()
   const userRole = getUserRole()
@@ -33,130 +34,73 @@ function SettingsPage() {
   useEffect(() => {
     loadUserInfo()
   }, [])
+  // ← Ajoute cet import en haut !
 
-  const loadUserInfo = async () => {
-    try {
-      // TODO: Appeler l'API pour récupérer les infos
-      // const response = await api.get('/auth/me/')
-      // setUserInfo(response.data)
-      
-      // Pour l'instant, données de démo
-      setUserInfo({
-        prenom: 'Admin',
-        nom: 'Système',
-        email: 'admin@entreprise.dz',
-        role: userRole
-      })
-    } catch (error) {
-      console.error('Erreur:', error)
-    }
+// Remplace loadUserInfo
+const loadUserInfo = async () => {
+  try {
+    const response = await api.get('/auth/me/')
+    setUserInfo({
+      prenom: response.data.prenom || '',
+      nom:    response.data.nom    || '',
+      email:  response.data.email  || '',
+      role:   response.data.role,
+    })
+  } catch (error) {
+    console.error('Erreur:', error)
   }
-
+}
   // Sauvegarder les informations du profil
-  const handleSaveProfile = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setMessage({ type: '', text: '' })
+const handleSaveProfile = async (e) => {
+  e.preventDefault()
+  setIsLoading(true)
+  setMessage({ type: '', text: '' })
 
-    try {
-      // TODO: Appeler l'API pour mettre à jour
-      // await api.patch('/auth/profile/', userInfo)
-      
-      // Simulation
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setMessage({ 
-        type: 'success', 
-        text: '✅ Profil mis à jour avec succès !' 
-      })
-    } catch (error) {
-      setMessage({ 
-        type: 'error', 
-        text: '❌ Erreur lors de la mise à jour du profil' 
-      })
-    } finally {
-      setIsLoading(false)
-    }
+  try {
+    await api.patch('/auth/profile/', {
+      prenom: userInfo.prenom,
+      nom:    userInfo.nom,
+      email:  userInfo.email,
+    })
+    setMessage({ type: 'success', text: '✅ Profil mis à jour avec succès !' })
+  } catch (error) {
+    setMessage({ type: 'error', text: '❌ Erreur lors de la mise à jour du profil' })
+  } finally {
+    setIsLoading(false)
   }
+}
 
   // Changer le mot de passe
   const handleChangePassword = async (e) => {
-    e.preventDefault()
-    setMessage({ type: '', text: '' })
+  e.preventDefault()
+  setMessage({ type: '', text: '' })
 
-    // Validation
-    if (passwords.newPassword !== passwords.confirmPassword) {
-      setMessage({ 
-        type: 'error', 
-        text: '❌ Les mots de passe ne correspondent pas' 
-      })
-      return
-    }
-
-    if (passwords.newPassword.length < 8) {
-      setMessage({ 
-        type: 'error', 
-        text: '❌ Le mot de passe doit contenir au moins 8 caractères' 
-      })
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      // TODO: Appeler l'API
-      // await api.post('/auth/change-password/', passwords)
-      
-      // Simulation
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setMessage({ 
-        type: 'success', 
-        text: '✅ Mot de passe changé avec succès !' 
-      })
-      
-      // Réinitialiser les champs
-      setPasswords({
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: ''
-      })
-    } catch (error) {
-      setMessage({ 
-        type: 'error', 
-        text: '❌ Mot de passe actuel incorrect' 
-      })
-    } finally {
-      setIsLoading(false)
-    }
+  if (passwords.newPassword !== passwords.confirmPassword) {
+    setMessage({ type: 'error', text: '❌ Les mots de passe ne correspondent pas' })
+    return
   }
 
-  // Sauvegarder les préférences
-  const handleSavePreferences = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setMessage({ type: '', text: '' })
-
-    try {
-      // TODO: Appeler l'API
-      // await api.patch('/auth/preferences/', preferences)
-      
-      // Simulation
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setMessage({ 
-        type: 'success', 
-        text: '✅ Préférences enregistrées !' 
-      })
-    } catch (error) {
-      setMessage({ 
-        type: 'error', 
-        text: '❌ Erreur lors de l\'enregistrement des préférences' 
-      })
-    } finally {
-      setIsLoading(false)
-    }
+  if (passwords.newPassword.length < 8) {
+    setMessage({ type: 'error', text: '❌ Le mot de passe doit contenir au moins 8 caractères' })
+    return
   }
+
+  setIsLoading(true)
+
+  try {
+    await api.post('/auth/change-password/', {
+      currentPassword: passwords.currentPassword,
+      newPassword:     passwords.newPassword,
+    })
+    setMessage({ type: 'success', text: '✅ Mot de passe changé avec succès !' })
+    setPasswords({ currentPassword: '', newPassword: '', confirmPassword: '' })
+  } catch (error) {
+    const msg = error.response?.data?.error || 'Mot de passe actuel incorrect'
+    setMessage({ type: 'error', text: `❌ ${msg}` })
+  } finally {
+    setIsLoading(false)
+  }
+}
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
