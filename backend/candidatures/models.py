@@ -83,7 +83,7 @@ class Candidature(models.Model):
     genre          = models.CharField(max_length=10, choices=Genre.choices)
     email          = models.EmailField(unique=True)
     telephone      = models.CharField(max_length=20)
-    direction      = models.TextField()
+    adresse = models.CharField(max_length=255, blank=True, null=True)
 
     # Informations académiques
     universite = models.CharField(max_length=200)

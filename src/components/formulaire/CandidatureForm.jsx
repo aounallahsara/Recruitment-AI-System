@@ -20,7 +20,7 @@ function CandidatureForm() {
     date_fin: '',
     encadrant: '',
     theme: '',
-    direction: '',
+    adresse: '',
     lettre_motivation_text: '',
     cv: null,
     lettre_motivation: null,
@@ -56,11 +56,19 @@ function CandidatureForm() {
 
     try {
       const data = new FormData()
-      Object.keys(formData).forEach(key => {
-        if (formData[key]) {
-          data.append(key, formData[key])
-        }
-      })
+      // Mapper correctement
+data.append('wilaya_nom', formData.wilaya)
+data.append('niveau_nom', formData.niveau)
+data.append('domaine_nom', formData.domaine)
+
+// Tous les autres champs sauf wilaya, niveau, domaine
+Object.keys(formData).forEach(key => {
+  if (!['wilaya', 'niveau', 'domaine'].includes(key) && formData[key]) {
+    data.append(key, formData[key])
+  }
+})
+
+data.append('source', 'formulaire')
 
       await submitCandidature(data)
       
@@ -86,7 +94,7 @@ function CandidatureForm() {
         date_fin: '',
         encadrant: '',
         theme: '',
-        direction: '',
+        adresse: '',
         lettre_motivation_text: '',
         cv: null,
         lettre_motivation: null,
@@ -247,12 +255,12 @@ function CandidatureForm() {
             </div>
 <div>
               <label className="block text-gray-700 text-sm mb-2">
-                Direction  <span className="text-red-500">*</span>
+                adresse  <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                name="direction"
-                value={formData.direction}
+                name="adresse"
+                value={formData.adresse}
                 onChange={handleInputChange}
                 placeholder="ex:25 Rue Didouche Mourad, Alger 16000"
                 required

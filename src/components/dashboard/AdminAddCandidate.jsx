@@ -58,7 +58,9 @@ function AdminAddCandidate({ onBack, onSuccess }) {
   // Niveaux d'études
   const niveaux = [
     'Licence 1', 'Licence 2', 'Licence 3',
-    'Master 1', 'Master 2', 'Doctorat'
+    'Master 1', 'Master 2', 'Doctorat',
+    'Ingénieur1', 'Ingénieur2', 'Ingénieur3',
+    'Ingénieur4', 'Ingénieur5', 
   ]
 
   // Durées de stage
@@ -166,9 +168,20 @@ function AdminAddCandidate({ onBack, onSuccess }) {
       const formDataToSend = new FormData()
       
       // Ajouter tous les champs
-      Object.keys(formData).forEach(key => {
-        formDataToSend.append(key, formData[key])
-      })
+      // Mapper les champs correctement pour le backend
+formDataToSend.append('wilaya_nom', formData.wilaya)
+formDataToSend.append('niveau_nom', formData.niveau)
+formDataToSend.append('domaine_nom', formData.domaine)
+
+// Ajouter tous les autres champs sauf wilaya, niveau, domaine
+Object.keys(formData).forEach(key => {
+  if (!['wilaya', 'niveau', 'domaine'].includes(key)) {
+    formDataToSend.append(key, formData[key])
+  }
+})
+
+// Source = admin
+formDataToSend.append('source', 'admin')
       
       // Ajouter les fichiers
       formDataToSend.append('cv', files.cv)
