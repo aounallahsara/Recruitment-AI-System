@@ -27,9 +27,9 @@ const criteresEvaluation = [
   },
   {
     key: 'connaissance_gc',
-    label: 'Connaissance (Génie Civil)',
+    label: 'Connaissance',
     icon: '🏗️',
-    description: 'Niveau de connaissance en génie civil',
+    description: 'Niveau de connaissance',
   },
 ]
 
@@ -99,6 +99,7 @@ function NoteInput({ value, onChange, readOnly }) {
 
 function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
   const [evaluation, setEvaluation] = useState({
+    nom_maitre_stage: candidate.evaluation?.nom_maitre_stage || '',
     maitre_stage: candidate.evaluation?.maitre_stage ?? '',
     entretien_materiel: candidate.evaluation?.entretien_materiel ?? '',
     interesse: candidate.evaluation?.interesse ?? '',
@@ -107,6 +108,47 @@ function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
     commentaire: candidate.evaluation?.commentaire || '',
   })
   const [evalSaved, setEvalSaved] = useState(false)
+  const [showEmailModal, setShowEmailModal] = useState(false)
+  const [emailSending, setEmailSending] = useState(false)
+  const [emailMessage, setEmailMessage] = useState({ type: '', text: '' })
+
+  const getEmailConfig = (statut) => {
+    switch (statut) {
+      case 'Selected':
+        return {
+          subject: '✅ Votre candidature a été acceptée !',
+          body: `Bonjour ${candidate.prenom} ${candidate.nom},\n\nNous avons le plaisir de vous informer que votre candidature pour le stage "${candidate.theme}" a été acceptée.\n\nPériode : du ${candidate.date_debut} au ${candidate.date_fin}\n\nNous vous contacterons prochainement pour les détails administratifs.\n\nCordialement,\nL'équipe Ressources Humaines`
+        }
+      case 'Rejected':
+        return {
+          subject: 'Résultat de votre candidature',
+          body: `Bonjour ${candidate.prenom} ${candidate.nom},\n\nNous vous remercions de l'intérêt que vous avez porté à notre entreprise pour le stage "${candidate.theme}".\n\nAprès étude attentive de votre dossier, nous sommes au regret de vous informer que nous ne pouvons donner une suite favorable à votre candidature.\n\nNous vous encourageons à postuler à nouveau pour nos prochaines offres.\n\nCordialement,\nL'équipe Ressources Humaines`
+        }
+      case 'Preselected':
+        return {
+          subject: '📋 Votre candidature - Présélection',
+          body: `Bonjour ${candidate.prenom} ${candidate.nom},\n\nNous avons le plaisir de vous informer que votre candidature pour le stage "${candidate.theme}" a retenu notre attention.\n\nVous serez contacté(e) dans les prochains jours pour un entretien.\n\nCordialement,\nL'équipe Ressources Humaines`
+        }
+      default:
+        return {
+          subject: 'Information concernant votre candidature',
+          body: `Bonjour ${candidate.prenom} ${candidate.nom},\n\nNous vous contactons concernant votre candidature.\n\nCordialement,\nL'équipe Ressources Humaines`
+        }
+    }
+  }
+
+  const handleSendEmail = () => {
+    setEmailSending(true)
+    const config = getEmailConfig(candidate.statut)
+    const mailtoLink = `mailto:${candidate.email}?subject=${encodeURIComponent(config.subject)}&body=${encodeURIComponent(config.body)}`
+    window.location.href = mailtoLink
+    setTimeout(() => {
+      setEmailSending(false)
+      setShowEmailModal(false)
+      setEmailMessage({ type: 'success', text: `✅ Email préparé pour ${candidate.email}` })
+      setTimeout(() => setEmailMessage({ type: '', text: '' }), 5000)
+    }, 1000)
+  }
 
   const getInitials = (prenom, nom) => {
     return `${prenom?.[0] || ''}${nom?.[0] || ''}`.toUpperCase()
@@ -376,6 +418,32 @@ function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
           </div>
 
           <div className="space-y-3">
+            {/* Champ Nom & Prénom du maître de stage */}
+            <div className="bg-white rounded-lg border border-amber-200 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl mt-0.5">🧑‍💼</span>
+                <div>
+                  <p className="font-semibold text-gray-800">Nom & Prénom du maître de stage</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Identité du responsable d'encadrement</p>
+                </div>
+              </div>
+              <div className="sm:flex-shrink-0">
+                {isAdmin ? (
+                  <input
+                    type="text"
+                    value={evaluation.nom_maitre_stage}
+                    onChange={(e) => handleEvalChange('nom_maitre_stage', e.target.value)}
+                    placeholder="Ex: M. Dupont Ahmed"
+                    className="w-52 px-3 py-1.5 border border-amber-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                ) : (
+                  <span className="text-sm font-medium text-gray-700">
+                    {evaluation.nom_maitre_stage || <span className="text-gray-400 italic text-sm">Non renseigné</span>}
+                  </span>
+                )}
+              </div>
+            </div>
+
             {criteresEvaluation.map((critere) => (
               <div
                 key={critere.key}
@@ -466,13 +534,26 @@ function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
 
         {/* Actions */}
         <div className="p-6 bg-gray-50">
+          {emailMessage.text && (
+            <div className={`mb-4 p-3 rounded-lg text-sm font-medium ${
+              emailMessage.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+            }`}>
+              {emailMessage.text}
+            </div>
+          )}
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
               <span className="text-sm text-gray-500">Statut actuel</span>
               <p className="text-lg font-semibold text-gray-900 mt-1">{candidate.statut}</p>
             </div>
             {isAdmin ? (
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-wrap">
+                <button
+                  onClick={() => setShowEmailModal(true)}
+                  className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 font-medium transition flex items-center gap-2"
+                >
+                  ✉️ Envoyer un email
+                </button>
                 <button className="bg-white text-gray-700 px-6 py-2.5 rounded-lg border border-gray-300 hover:bg-gray-50 font-medium transition">
                   Modifier le statut
                 </button>
@@ -488,6 +569,60 @@ function CandidateDetailsPage({ candidate, onBack, isAdmin }) {
           </div>
         </div>
       </div>
+
+      {/* Modal Email */}
+      {showEmailModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-xl">✉️</div>
+              <h3 className="text-lg font-bold text-gray-900">Envoyer un email au candidat</h3>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-4 mb-4 space-y-2 text-sm">
+              <div className="flex gap-2">
+                <span className="text-gray-500 w-16 shrink-0">À :</span>
+                <span className="font-medium text-gray-900">{candidate.email}</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-gray-500 w-16 shrink-0">Statut :</span>
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                  candidate.statut === 'Selected' ? 'bg-green-100 text-green-700' :
+                  candidate.statut === 'Preselected' ? 'bg-indigo-100 text-indigo-700' :
+                  candidate.statut === 'Rejected' ? 'bg-red-100 text-red-700' :
+                  'bg-gray-100 text-gray-700'
+                }`}>
+                  {candidate.statut}
+                </span>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-gray-500 w-16 shrink-0">Sujet :</span>
+                <span className="font-medium text-gray-900">{getEmailConfig(candidate.statut).subject}</span>
+              </div>
+            </div>
+
+            <p className="text-xs text-gray-500 mb-5">
+              Un email pré-rédigé sera ouvert dans votre client de messagerie. Vous pourrez le vérifier avant envoi.
+            </p>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowEmailModal(false)}
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 font-medium transition text-gray-700"
+              >
+                Annuler
+              </button>
+              <button
+                onClick={handleSendEmail}
+                disabled={emailSending}
+                className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {emailSending ? 'Ouverture...' : '✉️ Ouvrir le mail'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

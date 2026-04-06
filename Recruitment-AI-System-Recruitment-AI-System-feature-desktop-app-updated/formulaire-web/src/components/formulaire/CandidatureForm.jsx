@@ -466,24 +466,21 @@ function CandidatureForm() {
           </h3>
           
           <FileUpload
-            label="CV (PDF)"
+            label="CV (PDF) — optionnel"
             accept=".pdf"
             onChange={handleFileChange('cv')}
-            required
           />
           
           <FileUpload
-            label="Lettre de motivation (PDF)"
+            label="Lettre de motivation (PDF) — optionnel"
             accept=".pdf"
             onChange={handleFileChange('lettre_motivation')}
-            required
           />
           
           <FileUpload
-            label="Relevé de notes (PDF)"
+            label="Relevé de notes (PDF) — optionnel"
             accept=".pdf"
             onChange={handleFileChange('releve_notes')}
-            required
           />
         </div>
 
