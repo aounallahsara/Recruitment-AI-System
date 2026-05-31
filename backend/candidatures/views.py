@@ -36,8 +36,10 @@ def create_candidature(request):
             ).data,
             status=status.HTTP_201_CREATED
         )
+    print("=== ERREURS SERIALIZER ===", serializer.errors)  # ← LE PLUS IMPORTANT
     return Response(
         {'error': 'Données invalides', 'details': serializer.errors},
+
         status=status.HTTP_400_BAD_REQUEST
     )
 
@@ -81,6 +83,34 @@ def detail_candidature(request, pk):
     return Response(serializer.data)
 
 
+# @api_view(['PATCH'])
+# @permission_classes([IsAuthenticated, IsAdminUser])
+# def update_statut(request, pk):
+#     try:
+#         candidature = Candidature.objects.get(pk=pk)
+#     except Candidature.DoesNotExist:
+#         return Response(
+#             {'error': 'Candidature non trouvée'},
+#             status=status.HTTP_404_NOT_FOUND
+#         )
+
+#     nouveau_statut = request.data.get('statut_nom')
+
+#     # ── Mise à jour du statut (sans suppression) ──────────
+#     serializer = CandidatureUpdateStatutSerializer(
+#         candidature, data=request.data, partial=True
+#     )
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(
+#             CandidatureListSerializer(
+#                 candidature, context={'request': request}
+#             ).data
+#         )
+#     return Response(
+#         serializer.errors,
+#         status=status.HTTP_400_BAD_REQUEST
+#     )
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated, IsAdminUser])
 def update_statut(request, pk):
@@ -93,8 +123,13 @@ def update_statut(request, pk):
         )
 
     nouveau_statut = request.data.get('statut_nom')
+    motif_refus    = request.data.get('motif_refus', '')
 
-    # ── Mise à jour du statut (sans suppression) ──────────
+    # Sauvegarder le motif si rejet
+    if nouveau_statut == 'Rejected' and motif_refus:
+        candidature.motif_refus = motif_refus
+        candidature.save()
+
     serializer = CandidatureUpdateStatutSerializer(
         candidature, data=request.data, partial=True
     )
@@ -105,10 +140,7 @@ def update_statut(request, pk):
                 candidature, context={'request': request}
             ).data
         )
-    return Response(
-        serializer.errors,
-        status=status.HTTP_400_BAD_REQUEST
-    )
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

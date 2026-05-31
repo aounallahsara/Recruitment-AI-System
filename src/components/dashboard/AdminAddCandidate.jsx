@@ -33,7 +33,8 @@ function AdminAddCandidate({ onBack, onSuccess }) {
   const [files, setFiles] = useState({
     cv: null,
     lettre_motivation: null,
-    releve_notes: null
+    releve_notes: null,
+    photo: null  
   })
 
   // États
@@ -78,7 +79,23 @@ function AdminAddCandidate({ onBack, onSuccess }) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
   }
+  const handlePhotoChange = (e) => {
+  const file = e.target.files[0]
+  if (!file) return
 
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']
+  if (!allowedTypes.includes(file.type)) {
+    setErrors(prev => ({ ...prev, photo: 'La photo doit être JPG ou PNG' }))
+    return
+  }
+  if (file.size > 2 * 1024 * 1024) {
+    setErrors(prev => ({ ...prev, photo: 'La photo ne peut pas dépasser 2 MB' }))
+    return
+  }
+
+  setFiles(prev => ({ ...prev, photo: file }))
+  if (errors.photo) setErrors(prev => ({ ...prev, photo: '' }))
+}
   // Gérer les fichiers
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0]
@@ -172,7 +189,9 @@ function AdminAddCandidate({ onBack, onSuccess }) {
 formDataToSend.append('wilaya_nom', formData.wilaya)
 formDataToSend.append('niveau_nom', formData.niveau)
 formDataToSend.append('domaine_nom', formData.domaine)
-
+if (files.photo) {
+  formDataToSend.append('photo', files.photo)
+}
 // Ajouter tous les autres champs sauf wilaya, niveau, domaine
 Object.keys(formData).forEach(key => {
   if (!['wilaya', 'niveau', 'domaine'].includes(key)) {
@@ -629,7 +648,33 @@ formDataToSend.append('source', 'admin')
                   <p className="text-red-500 text-xs mt-1">{errors.lettre_motivation}</p>
                 )}
               </div>
-
+                              {/* Photo du candidat */}
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Photo du candidat <span className="text-gray-400">(optionnel — JPG/PNG, max 2 MB)</span>
+                  </label>
+                  <div className={`w-full px-3 py-2 border rounded-lg ${
+                    errors.photo ? 'border-red-500' : 'border-gray-300'
+                  }`}>
+                    <input
+                      type="file"
+                      accept=".jpg,.jpeg,.png"
+                      onChange={handlePhotoChange}
+                      className="w-full"
+                    />
+                  </div>
+                  {files.photo && (
+                    <div className="flex items-center gap-3 mt-2">
+                      <img
+                        src={URL.createObjectURL(files.photo)}
+                        alt="Aperçu"
+                        className="w-16 h-16 rounded-full object-cover border-2 border-blue-200"
+                      />
+                      <p className="text-green-600 text-xs">✓ {files.photo.name}</p>
+                    </div>
+                  )}
+                  {errors.photo && <p className="text-red-500 text-xs mt-1">{errors.photo}</p>}
+                </div>
               {/* Relevé notes */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

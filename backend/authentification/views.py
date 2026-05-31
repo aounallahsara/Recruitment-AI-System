@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate
 from .models import User
 from django.core.mail import send_mail
 from django.conf import settings
+from django.core.mail import send_mail
+from django.conf import settings as django_settings
 
 
 @api_view(['POST'])
@@ -110,43 +112,113 @@ def change_password(request):
     user.set_password(new_pass)
     user.save()
     return Response({'message': 'Mot de passe changé avec succès !'})
+
+
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-
-
 def send_acceptance_email(request, candidature_id):
+    """Envoyer email d'acceptation au candidat sélectionné."""
     if request.user.role != 'admin':
         return Response({'error': 'Accès refusé'}, status=403)
-    
+
     try:
         from candidatures.models import Candidature
         candidature = Candidature.objects.get(pk=candidature_id)
     except Candidature.DoesNotExist:
         return Response({'error': 'Candidature non trouvée'}, status=404)
-    
-    subject = 'Félicitations ! Votre candidature de stage a été acceptée'
-    message = f'''
+
+    subject = '🎉 Félicitations ! Votre candidature de stage a été acceptée'
+    message = f"""
 Bonjour {candidature.prenom} {candidature.nom},
- 
+
 Nous avons le plaisir de vous informer que votre candidature de stage
-sur le thème '{candidature.theme}' a été sélectionnée.
- 
-Durée : {candidature.duree}
-Début : {candidature.date_debut}
-Fin   : {candidature.date_fin}
- 
-Nous vous contacterons prochainement pour les détails.
- 
+a été officiellement sélectionnée.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  DÉTAILS DE VOTRE STAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Thème     : {candidature.theme}
+  Durée     : {candidature.duree}
+  Début     : {candidature.date_debut}
+  Fin       : {candidature.date_fin}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nous vous contacterons très prochainement pour vous communiquer
+les informations pratiques concernant votre accueil.
+
+En vous souhaitant la bienvenue dans notre équipe,
+
 Cordialement,
-L'équipe RH
-    '''
-    
-    send_mail(
-        subject,
-        message,
-        settings.DEFAULT_FROM_EMAIL,
-        [candidature.email],
-        fail_silently=False,
-    )
-    
-    return Response({'message': f'Email envoyé à {candidature.email}'})
+L'équipe des Ressources Humaines
+    """
+
+    try:
+        send_mail(
+            subject, message,
+            django_settings.DEFAULT_FROM_EMAIL,
+            [candidature.email],
+            fail_silently=False,
+        )
+        return Response({
+            'message': f'✅ Email d\'acceptation envoyé à {candidature.email}'
+        })
+    except Exception as e:
+        return Response({'error': f'Erreur envoi email : {str(e)}'}, status=500)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def send_rejection_email(request, candidature_id):
+    """Envoyer email de refus au candidat rejeté."""
+    if request.user.role != 'admin':
+        return Response({'error': 'Accès refusé'}, status=403)
+
+    try:
+        from candidatures.models import Candidature
+        candidature = Candidature.objects.get(pk=candidature_id)
+    except Candidature.DoesNotExist:
+        return Response({'error': 'Candidature non trouvée'}, status=404)
+
+    motif = candidature.motif_refus or "Votre profil ne correspond pas aux critères requis pour ce stage."
+
+    subject = 'Réponse à votre candidature de stage'
+    message = f"""
+Bonjour {candidature.prenom} {candidature.nom},
+
+Nous vous remercions de l'intérêt que vous portez à notre entreprise
+et du temps consacré à votre candidature de stage.
+
+Après examen attentif de votre dossier, nous avons le regret de vous
+informer que nous ne pouvons pas donner suite à votre candidature.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MOTIF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  {motif}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Cette décision ne remet pas en cause vos qualités personnelles
+et professionnelles. Nous vous encourageons à poursuivre vos
+démarches et vous souhaitons pleine réussite dans votre parcours.
+
+Cordialement,
+L'équipe des Ressources Humaines
+    """
+
+    try:
+        send_mail(
+            subject, message,
+            django_settings.DEFAULT_FROM_EMAIL,
+            [candidature.email],
+            fail_silently=False,
+        )
+        return Response({
+            'message': f'✅ Email de refus envoyé à {candidature.email}'
+        })
+    except Exception as e:
+        return Response({'error': f'Erreur envoi email : {str(e)}'}, status=500)

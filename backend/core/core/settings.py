@@ -181,4 +181,4 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # L'expéditeur affiché chez le candidat
-DEFAULT_FROM_EMAIL = 'Recrutement AI System <recrutement.noreply@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Recrutement AI System <recrutementhas.noreply@gmail.com>'

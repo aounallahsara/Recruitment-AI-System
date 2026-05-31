@@ -104,6 +104,8 @@ class Candidature(models.Model):
 
     # Métadonnées
     date_soumission = models.DateTimeField(auto_now_add=True)
+    # Ajoute après 'date_soumission'
+    motif_refus = models.TextField(blank=True, null=True)
     source = models.CharField(
         max_length=20,
         choices=[
@@ -151,17 +153,23 @@ class Evaluation(models.Model):
     )
     commentaire         = models.TextField(blank=True, null=True)
     note_globale        = models.DecimalField(
-        max_digits=3, decimal_places=2,
+        max_digits=5, decimal_places=2,
         editable=False, default=0
     )
     date_evaluation     = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        # Calcul automatique de la note globale
-        self.note_globale = round(
-            (self.Comprehension_et_apprentissage  + self.Competences_techniques_de_base +
-             self.Capacite_adaptation   + self.Motivation_et_implication +self.Esprit_analyse_et_reflexion +self.Communication_et_comportement+self.Autonomie_et_initiative          ) / 7, 2
+        total = (
+            self.Comprehension_et_apprentissage +   # max 20
+            self.Competences_techniques_de_base +   # max 20
+            self.Capacite_adaptation +              # max 15
+            self.Motivation_et_implication +        # max 15
+            self.Esprit_analyse_et_reflexion +      # max 10
+            self.Communication_et_comportement +    # max 10
+            self.Autonomie_et_initiative            # max 10
         )
+    # Total max possible = 100, ramener sur 20
+        self.note_globale = round((total / 100) * 20, 2)
         super().save(*args, **kwargs)
 
     class Meta:

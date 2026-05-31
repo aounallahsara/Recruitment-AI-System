@@ -103,7 +103,7 @@ function DashboardAdmin() {
           <p className="text-xs text-gray-500 mt-1">Accès complet</p>
         </div>
         
-        <nav className="px-4">
+        {/* <nav className="px-4">
           {['Dashboard', 'All Candidates', 'Preselected', 'Selected', 'Manage Users'].map((item) => (
             <button
               key={item}
@@ -117,7 +117,7 @@ function DashboardAdmin() {
               {item}
             </button>
           ))}
-        </nav>
+        </nav> */}
 
         <div className="px-4 mt-8">
           <h3 className="text-sm font-semibold text-gray-500 px-4 mb-2">SYSTEM</h3>

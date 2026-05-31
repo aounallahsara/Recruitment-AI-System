@@ -4,7 +4,7 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [filterDomain, setFilterDomain] = useState('All Domains')
   const [filterStatus, setFilterStatus] = useState('All Statuses')
-
+  const [dateFilter, setDateFilter] = useState({ debut: '', fin: '' })
   const getStatusColor = (status) => {
     switch (status) {
       case 'Selected':
@@ -17,23 +17,27 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
         return 'bg-gray-100 text-gray-700'
     }
   }
-
+  
   const getGenreIcon = (genre) => {
     return genre === 'Masculin' ? '' : ''
   }
 
   const filteredCandidates = candidates.filter(candidate => {
-    const matchesSearch = 
-      candidate.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      candidate.prenom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      candidate.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      candidate.wilaya.toLowerCase().includes(searchTerm.toLowerCase())
-    
-    const matchesDomain = filterDomain === 'All Domains' || candidate.domaine === filterDomain
-    const matchesStatus = filterStatus === 'All Statuses' || candidate.statut === filterStatus
-    
-    return matchesSearch && matchesDomain && matchesStatus
-  })
+  const matchesSearch = 
+    candidate.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    candidate.prenom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    candidate.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    candidate.wilaya.toLowerCase().includes(searchTerm.toLowerCase())
+  
+  const matchesDomain = filterDomain === 'All Domains' || candidate.domaine === filterDomain
+  const matchesStatus = filterStatus === 'All Statuses' || candidate.statut === filterStatus
+
+  // ← ajouter ces deux lignes
+  const matchesDebut = !dateFilter.debut || candidate.date_debut >= dateFilter.debut
+  const matchesFin   = !dateFilter.fin   || candidate.date_fin   <= dateFilter.fin
+
+  return matchesSearch && matchesDomain && matchesStatus && matchesDebut && matchesFin
+})
 
   const uniqueDomains = ['All Domains', ...new Set(candidates.map(c => c.domaine))]
   const uniqueStatuses = ['All Statuses', 'Selected', 'Preselected', 'Rejected']
@@ -74,11 +78,40 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
             setSearchTerm('')
             setFilterDomain('All Domains')
             setFilterStatus('All Statuses')
+             setDateFilter({ debut: '', fin: '' })  
           }}
           className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
         >
           Reset
         </button>
+        <div className="flex items-center gap-3 flex-wrap">
+  <div className="flex items-center gap-2">
+    <label className="text-sm text-gray-500 whitespace-nowrap">Début stage :</label>
+    <input
+      type="date"
+      value={dateFilter.debut}
+      onChange={e => setDateFilter({ ...dateFilter, debut: e.target.value })}
+      className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+    />
+  </div>
+  <div className="flex items-center gap-2">
+    <label className="text-sm text-gray-500 whitespace-nowrap">Fin stage :</label>
+    <input
+      type="date"
+      value={dateFilter.fin}
+      onChange={e => setDateFilter({ ...dateFilter, fin: e.target.value })}
+      className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+    />
+  </div>
+  {(dateFilter.debut || dateFilter.fin) && (
+    <button
+      onClick={() => setDateFilter({ debut: '', fin: '' })}
+      className="text-xs text-red-500 hover:text-red-700 font-medium"
+    >
+      ✕ Effacer dates
+    </button>
+  )}
+</div>
       </div>
 
       {/* Table */}
@@ -122,7 +155,17 @@ function CandidatesTable({ candidates, onViewDetails, isAdmin }) {
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="text-2xl">{getGenreIcon(candidate.genre)}</div>
+                    {candidate.photo_url ? (
+                      <img
+                        src={candidate.photo_url}
+                        alt={`${candidate.prenom} ${candidate.nom}`}
+                        className="w-14 h-14 rounded-full object-cover border-2 border-gray-200 flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                        {candidate.prenom?.[0]}{candidate.nom?.[0]}
+                      </div>
+                    )}
                     <div>
                       <div className="font-medium text-gray-900">
                         {candidate.prenom} {candidate.nom}
