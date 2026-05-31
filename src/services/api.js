@@ -11,22 +11,18 @@ const api = axios.create({
   },
 })
 
-// Intercepteur pour ajouter automatiquement le token d'authentification
+
 api.interceptors.request.use(
   (config) => {
-    // Récupère le token stocké dans localStorage
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     
-    // Si un token existe, l'ajoute dans les headers
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+    // N'ajoute le token QUE si ce n'est pas la page de login
+    if (token && !config.url.includes('auth/login')) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     
-    return config
+    return config;
   },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
-
+  (error) => Promise.reject(error)
+);
 export default api

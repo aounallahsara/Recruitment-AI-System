@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from authentification.views import send_acceptance_email
+ 
+path('candidatures/<int:candidature_id>/send-email/',
+     send_acceptance_email, name='send-email'),
 
 urlpatterns = [
     path('admin/', admin.site.urls),

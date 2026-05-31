@@ -13,6 +13,14 @@ from .serializers import (
     CandidatureUpdateStatutSerializer
 )
 from .permissions import IsAdminUser
+from .models import Candidature, Statut, Evaluation
+from .serializers import (
+    CandidatureCreateSerializer,
+    CandidatureListSerializer,
+    CandidatureUpdateStatutSerializer,
+    EvaluationCreateSerializer,
+    EvaluationSerializer
+)
 
 
 @api_view(['POST'])
@@ -117,3 +125,51 @@ def dashboard_stats(request):
             date_soumission__year=annee
         ).count(),
     })
+
+# POST /api/candidatures/{id}/evaluation/
+@api_view(['POST', 'PUT'])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def create_update_evaluation(request, pk):
+    """Créer ou modifier l'évaluation d'une candidature. Admin seulement."""
+    try:
+        candidature = Candidature.objects.get(pk=pk)
+    except Candidature.DoesNotExist:
+        return Response(
+            {'error': 'Candidature non trouvée'},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    # Vérifier si une évaluation existe déjà
+    try:
+        evaluation = candidature.evaluation
+        # Mise à jour
+        serializer = EvaluationCreateSerializer(
+            evaluation, data=request.data, partial=True
+        )
+    except Evaluation.DoesNotExist:
+        # Création
+        serializer = EvaluationCreateSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save(candidature=candidature)
+        return Response(
+            EvaluationSerializer(serializer.instance).data,
+            status=status.HTTP_201_CREATED
+        )
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# GET /api/candidatures/{id}/evaluation/
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_evaluation(request, pk):
+    """Récupérer l'évaluation d'une candidature."""
+    try:
+        candidature = Candidature.objects.get(pk=pk)
+        evaluation  = candidature.evaluation
+        return Response(EvaluationSerializer(evaluation).data)
+    except Candidature.DoesNotExist:
+        return Response({'error': 'Candidature non trouvée'}, status=404)
+    except Evaluation.DoesNotExist:
+        return Response({'error': 'Pas encore évalué'}, status=404)

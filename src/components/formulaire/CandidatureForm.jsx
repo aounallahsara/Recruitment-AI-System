@@ -60,7 +60,7 @@ function CandidatureForm() {
 data.append('wilaya_nom', formData.wilaya)
 data.append('niveau_nom', formData.niveau)
 data.append('domaine_nom', formData.domaine)
-
+if (formData.photo) data.append('photo', formData.photo)
 // Tous les autres champs sauf wilaya, niveau, domaine
 Object.keys(formData).forEach(key => {
   if (!['wilaya', 'niveau', 'domaine'].includes(key) && formData[key]) {
@@ -99,6 +99,7 @@ data.append('source', 'formulaire')
         cv: null,
         lettre_motivation: null,
         releve_notes: null,
+        photo: null,
       })
     } catch (error) {
       setMessage({
@@ -493,6 +494,29 @@ data.append('source', 'formulaire')
             onChange={handleFileChange('releve_notes')}
             required
           />
+          {/* Photo du candidat */}
+<div className="mb-4">
+  <label className="block text-gray-700 text-sm mb-2">
+    Photo du candidat <span className="text-red-500">*</span>
+  </label>
+  <input
+    type="file"
+    accept=".jpg,.jpeg,.png"
+    onChange={(e) => setFormData({...formData, photo: e.target.files[0]})}
+    required
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+  />
+  <p className="text-xs text-gray-500 mt-1">JPG ou PNG, max 2 MB</p>
+  {formData.photo && (
+    <div className="mt-2">
+      <img
+        src={URL.createObjectURL(formData.photo)}
+        alt="Aperçu"
+        className="w-24 h-24 rounded-full object-cover border-2 border-blue-300"
+      />
+    </div>
+  )}
+</div>
         </div>
 
         {/* Bouton de soumission */}

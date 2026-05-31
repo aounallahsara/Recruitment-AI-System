@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
-# ── Tables de référence (3FN) ─────────────────────────────────────────────────
+
 
 class Wilaya(models.Model):
     nom = models.CharField(max_length=100, unique=True)
@@ -84,7 +84,9 @@ class Candidature(models.Model):
     email          = models.EmailField(unique=True)
     telephone      = models.CharField(max_length=20)
     adresse = models.CharField(max_length=255, blank=True, null=True)
-
+    photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+    def upload_photo(instance, filename):
+        return f'photos/{instance.id}_{filename}'
     # Informations académiques
     universite = models.CharField(max_length=200)
     moyenne    = models.DecimalField(
@@ -116,6 +118,57 @@ class Candidature(models.Model):
 
     def __str__(self):
         return f"{self.prenom} {self.nom} - {self.statut}"
+
+
+# ── Nouveau modèle Evaluation ─────────────────────────────
+class Evaluation(models.Model):
+    candidature = models.OneToOneField(
+        Candidature,
+        on_delete=models.CASCADE,
+        related_name='evaluation'
+    )
+    Comprehension_et_apprentissage           = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(20)]
+    )
+    Competences_techniques_de_base       = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(20)]
+    )
+    Capacite_adaptation  = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(15)]
+    )
+    Motivation_et_implication          = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(15)]
+    )
+     
+    Esprit_analyse_et_reflexion   = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(10)]
+    )
+    Communication_et_comportement = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(10)]
+    )
+    Autonomie_et_initiative = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(10)]
+    )
+    commentaire         = models.TextField(blank=True, null=True)
+    note_globale        = models.DecimalField(
+        max_digits=3, decimal_places=2,
+        editable=False, default=0
+    )
+    date_evaluation     = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Calcul automatique de la note globale
+        self.note_globale = round(
+            (self.Comprehension_et_apprentissage  + self.Competences_techniques_de_base +
+             self.Capacite_adaptation   + self.Motivation_et_implication +self.Esprit_analyse_et_reflexion +self.Communication_et_comportement+self.Autonomie_et_initiative          ) / 7, 2
+        )
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Évaluation'
+
+    def __str__(self):
+        return f"Évaluation de {self.candidature}"
 
 
 # ── Table Documents (3FN) ─────────────────────────────────────────────────────

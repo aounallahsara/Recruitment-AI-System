@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from .models import User
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 @api_view(['POST'])
@@ -18,8 +21,9 @@ def login_view(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    user = authenticate(username=username, password=password)
 
+    user = authenticate(username=username, password=password)
+    print(f"Tentative de connexion - Username: {username} | Password: {password}")
     if user is None:
         return Response(
             {'error': 'Identifiants incorrects.'},
@@ -106,3 +110,43 @@ def change_password(request):
     user.set_password(new_pass)
     user.save()
     return Response({'message': 'Mot de passe changé avec succès !'})
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+
+
+def send_acceptance_email(request, candidature_id):
+    if request.user.role != 'admin':
+        return Response({'error': 'Accès refusé'}, status=403)
+    
+    try:
+        from candidatures.models import Candidature
+        candidature = Candidature.objects.get(pk=candidature_id)
+    except Candidature.DoesNotExist:
+        return Response({'error': 'Candidature non trouvée'}, status=404)
+    
+    subject = 'Félicitations ! Votre candidature de stage a été acceptée'
+    message = f'''
+Bonjour {candidature.prenom} {candidature.nom},
+ 
+Nous avons le plaisir de vous informer que votre candidature de stage
+sur le thème '{candidature.theme}' a été sélectionnée.
+ 
+Durée : {candidature.duree}
+Début : {candidature.date_debut}
+Fin   : {candidature.date_fin}
+ 
+Nous vous contacterons prochainement pour les détails.
+ 
+Cordialement,
+L'équipe RH
+    '''
+    
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [candidature.email],
+        fail_silently=False,
+    )
+    
+    return Response({'message': f'Email envoyé à {candidature.email}'})
