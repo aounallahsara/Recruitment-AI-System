@@ -1,0 +1,47 @@
+{
+  "best_model": "LogisticRegression",
+  "n_samples": 1657,
+  "classes": [
+    "humain",
+    "hybride",
+    "ia"
+  ],
+  "class_dist": {
+    "human_scraped": 768,
+    "hybrid": 300,
+    "ai": 299,
+    "human": 290
+  },
+  "cv_results": {
+    "LogisticRegression": {
+      "cv_f1_macro_mean": 0.8489,
+      "cv_f1_macro_std": 0.0251,
+      "cv_accuracy_mean": 0.8582,
+      "cv_accuracy_std": 0.0246
+    },
+    "LinearSVC": {
+      "cv_f1_macro_mean": 0.8648,
+      "cv_f1_macro_std": 0.0258,
+      "cv_accuracy_mean": 0.8744,
+      "cv_accuracy_std": 0.0257
+    },
+    "RandomForest": {
+      "cv_f1_macro_mean": 0.9979,
+      "cv_f1_macro_std": 0.0018,
+      "cv_accuracy_mean": 0.9982,
+      "cv_accuracy_std": 0.0015
+    },
+    "GradientBoosting": {
+      "cv_f1_macro_mean": 0.9986,
+      "cv_f1_macro_std": 0.0017,
+      "cv_accuracy_mean": 0.9988,
+      "cv_accuracy_std": 0.0015
+    }
+  },
+  "train_accuracy": 0.8612,
+  "train_f1_macro": 0.8514,
+  "feature_shape": [
+    1657,
+    11
+  ]
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "text": "Madame, Monsieur,\n\nActuellement en dernière année de Master en informatique à l'Université de Bordeaux, je me permets de vous adresser ma candidature pour le poste de développeur full-stack au sein de votre entreprise. Mon parcours académique m'a permis d'acquérir des compétences solides en développement web, notamment avec les technologies React, Node.js et Python.\n\nDurant mon stage de fin d'études chez Capgemini, j'ai participé à la conception et au développement d'une application de gestion de projets internes. Cette expérience m'a permis de mettre en pratique mes connaissances théoriques dans un environnement professionnel exigeant. J'ai notamment été responsable de l'intégration d'une API REST et de la mise en place de tests unitaires automatisés.\n\nVotre entreprise m'attire particulièrement en raison de son engagement dans l'innovation technologique et de sa culture d'entreprise axée sur le développement des talents. Je suis convaincu que mes compétences techniques et mon sens du travail en équipe seraient un atout pour contribuer à vos projets ambitieux.\n\nDans l'attente de votre réponse, je reste à votre entière disposition pour un entretien à votre convenance.\n\nVeuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe vous écris parce que votre offre de stage en data science a vraiment retenu mon attention. Je suis étudiant en troisième année d'école d'ingénieurs à l'ENSIMAG, et je cherche un stage de six mois à partir de février.\n\nCe qui m'intéresse chez vous, c'est que vous travaillez sur des problématiques concrètes de machine learning appliqué au secteur de la santé. Pendant mes études, j'ai réalisé plusieurs projets en Python avec scikit-learn et TensorFlow, dont un système de détection d'anomalies dans des séries temporelles médicales qui a obtenu un F1-score de 0.87.\n\nJe suis quelqu'un de curieux, j'aime comprendre les choses en profondeur avant de coder. Je pense que c'est important dans le domaine de la data science où une mauvaise compréhension des données peut mener à des résultats trompeurs.\n\nJe serais ravi d'échanger avec vous sur ce stage. N'hésitez pas à me contacter par mail ou par téléphone.\n\nCordialement",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nDiplômé d'un Master en cybersécurité de l'Université de Rennes 1, je souhaite intégrer votre équipe en tant qu'analyste SOC. Ayant suivi avec intérêt l'évolution de votre entreprise dans le domaine de la protection des infrastructures critiques, je suis convaincu de pouvoir apporter une contribution significative à vos activités.\n\nMon mémoire de fin d'études portait sur la détection d'intrusions par analyse comportementale des flux réseau, utilisant des techniques de deep learning sur des captures PCAP. J'ai également obtenu la certification CompTIA Security+ et je maîtrise les outils Splunk, Wireshark et Metasploit.\n\nLors de mon alternance chez Orange Cyberdefense, j'ai traité quotidiennement des incidents de sécurité de niveaux 1 et 2, rédigé des rapports d'investigation et participé à l'amélioration des règles de détection SIEM. Cette expérience terrain m'a appris la rigueur et la réactivité nécessaires dans ce métier.\n\nJe me tiens à votre disposition pour tout entretien complémentaire.\n\nRespecteusement,",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe candidate pour le poste d'ingénieur DevOps que vous proposez. Je termine mon cursus à Epitech et j'ai acquis une bonne maîtrise de Docker, Kubernetes et des pipelines CI/CD avec GitLab CI.\n\nPendant mon année à l'étranger en Corée du Sud, j'ai travaillé dans une startup qui développait une plateforme de streaming. J'y ai mis en place l'infrastructure cloud sur AWS, automatisé les déploiements et réduit le temps de mise en production de 45 minutes à 8 minutes. Ça m'a beaucoup appris sur la gestion de la charge et le monitoring en temps réel.\n\nCe qui me plaît dans votre offre c'est l'aspect infrastructure as code et le fait que vous utilisiez Terraform. C'est un outil que j'ai utilisé en projet personnel et que j'aimerais approfondir dans un contexte professionnel.\n\nDisponible immédiatement, je serais content de discuter de vive voix.\n\nBien cordialement",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nPassionné par l'intelligence artificielle depuis mes premiers cours de programmation, j'ai naturellement orienté mon parcours vers le machine learning et le traitement du langage naturel. Je suis actuellement en fin de cycle ingénieur à CentraleSupélec et je recherche un premier emploi en tant qu'ingénieur NLP.\n\nAu cours de ma formation, j'ai eu l'opportunité de travailler sur des projets variés : un chatbot de service client utilisant BERT fine-tuné sur des données françaises, un système de résumé automatique de documents juridiques, et un outil de classification de sentiments pour une startup e-commerce. Ces projets m'ont permis de maîtriser les frameworks PyTorch et Hugging Face Transformers.\n\nVotre laboratoire de recherche appliquée en NLP représente pour moi l'environnement idéal pour continuer à développer mes compétences tout en contribuant à des innovations concrètes. La publication récente de votre équipe sur les modèles multilingues a particulièrement attiré mon attention.\n\nJe serais honoré de pouvoir vous présenter mon portfolio de projets lors d'un entretien.\n\nVeuillez agréer, Madame, Monsieur, mes salutations les plus respectueuses.",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nIngénieur en génie civil diplômé de l'École Nationale des Ponts et Chaussées, je souhaite rejoindre votre bureau d'études en tant que chargé d'études structures. Fort de deux années d'expérience en alternance chez Bouygues Construction, j'ai développé une expertise dans le dimensionnement de structures en béton armé et en charpente métallique.\n\nDurant cette période, j'ai participé à la conception structurelle d'un immeuble de bureaux de 12 étages à La Défense, en réalisant les notes de calcul selon les Eurocodes et en utilisant les logiciels Robot Structural Analysis et SCIA Engineer. J'ai également contribué à l'optimisation des fondations profondes d'un parking souterrain, permettant une économie de 15% sur le volume de béton.\n\nVotre entreprise est reconnue pour son expertise dans les ouvrages d'art et les structures complexes. Intégrer votre équipe serait une opportunité exceptionnelle pour approfondir mes compétences techniques tout en participant à des projets structurants.\n\nJe reste à votre entière disposition pour un entretien.\n\nVeuillez recevoir, Madame, Monsieur, l'expression de ma considération distinguée.",
+    "source_type": "ia",
+    "domain": "Civil",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis intéressé par l'offre d'ingénieur travaux que vous avez publiée. J'ai un diplôme en génie civil de Polytech Lille et j'ai fait mon stage de fin d'études sur un chantier de rénovation d'un pont autoroutier.\n\nCe qui m'a le plus marqué pendant ce stage, c'est la complexité de la coordination entre les différents corps de métier. J'ai appris à gérer les imprévus, à adapter le planning en fonction de la météo et des retards de livraison, et surtout à communiquer efficacement avec les ouvriers et les sous-traitants.\n\nJe suis quelqu'un de terrain, je préfère être sur le chantier plutôt que derrière un bureau. En même temps, je sais utiliser AutoCAD, Revit et les outils de planification comme MS Project. Je pense que c'est cette double compétence qui fait la différence.\n\nJe suis mobile géographiquement et disponible dès septembre.\n\nCordialement",
+    "source_type": "ia",
+    "domain": "Civil",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nTitulaire d'un Master en génie civil option géotechnique de l'Université de Strasbourg, je vous adresse ma candidature pour le poste d'ingénieur géotechnicien. Mon parcours m'a conduit à me spécialiser dans l'étude des sols et des fondations, avec une attention particulière portée aux risques naturels.\n\nMon projet de fin d'études, réalisé en collaboration avec le BRGM, portait sur la modélisation numérique du comportement des argiles gonflantes sous sollicitations hydriques. J'ai utilisé le logiciel Plaxis 2D pour simuler les déformations du sol et proposer des solutions de fondations adaptées pour des constructions en zone sensible.\n\nParallèlement à mes études, j'ai effectué un stage de quatre mois dans un laboratoire de mécanique des sols où j'ai réalisé des essais triaxiaux, des essais œdométriques et des sondages pressiométriques. Cette expérience pratique complète efficacement ma formation théorique.\n\nVotre cabinet jouissant d'une réputation solide dans le domaine des études géotechniques complexes, je serais très motivé à y apporter ma contribution.\n\nDans l'attente de votre retour, veuillez agréer mes sincères salutations.",
+    "source_type": "ia",
+    "domain": "Civil",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nÉtudiant en dernière année à l'INSA Lyon en département Génie Mécanique, je recherche un stage de fin d'études de six mois dans le domaine de la conception mécanique. Votre entreprise, spécialisée dans la fabrication de composants aéronautiques, correspond parfaitement à mes ambitions professionnelles.\n\nMa formation m'a permis d'acquérir des compétences en conception assistée par ordinateur (CATIA V5, SolidWorks), en résistance des matériaux et en mécanique des fluides. J'ai également suivi des cours avancés en matériaux composites et en méthodes de fabrication additive.\n\nLors de mon stage précédent chez Safran Aircraft Engines, j'ai contribué à l'optimisation topologique d'un support moteur, réduisant sa masse de 22% tout en respectant les critères de résistance en fatigue. J'ai utilisé les logiciels ANSYS Mechanical et HyperMesh pour les simulations par éléments finis.\n\nMotivé et rigoureux, je souhaite mettre mes compétences au service de vos équipes de conception.\n\nVeuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Mecanique",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nVotre offre de poste en bureau d'études mécanique m'intéresse beaucoup. Je sors d'un DUT Génie Mécanique et Productique et je viens de valider ma licence pro en conception de produits industriels.\n\nPendant mes études, j'ai surtout travaillé sur SolidWorks et un peu sur CATIA. Mon projet de licence portait sur la reconception d'un bras robotique pour une PME locale — on a réussi à simplifier l'assemblage de 47 pièces à 31 pièces, ce qui a réduit le temps de montage de presque 40%.\n\nJ'aime bien le côté concret de la mécanique. Voir un plan se transformer en pièce réelle, c'est ce qui me motive. Je suis aussi à l'aise avec l'impression 3D, j'ai mon imprimante personnelle et je prototype régulièrement des petits mécanismes.\n\nJe cherche une entreprise où je pourrai progresser techniquement tout en étant rapidement autonome sur des projets.\n\nMerci d'avance pour votre attention,\nCordialement",
+    "source_type": "ia",
+    "domain": "Mecanique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nIngénieur mécanicien avec une spécialisation en thermique et énergétique, je suis vivement intéressé par le poste d'ingénieur R&D que vous proposez dans le domaine des systèmes de refroidissement pour véhicules électriques.\n\nIssu de l'École Centrale de Nantes, j'ai consacré mon projet de recherche à l'étude des échangeurs de chaleur compacts pour batteries lithium-ion. Mes travaux ont combiné des simulations CFD sous STAR-CCM+ avec des essais expérimentaux sur banc thermique, aboutissant à un design d'échangeur présentant une amélioration de 18% du coefficient d'échange thermique par rapport à la solution existante.\n\nCette expérience m'a appris à naviguer entre la simulation numérique et la réalité expérimentale, deux mondes qui ne se rejoignent pas toujours. J'ai développé un sens critique vis-à-vis des résultats de simulation et une méthodologie rigoureuse de validation.\n\nL'engagement de votre groupe dans la transition énergétique et vos investissements en R&D font de votre entreprise un cadre stimulant pour poursuivre ma carrière.\n\nJe me tiens à votre disposition pour échanger sur ma candidature.\n\nBien respectueusement,",
+    "source_type": "ia",
+    "domain": "Mecanique",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nDiplômé de l'ENSEEIHT en génie électrique et automatique, je vous soumets ma candidature pour le poste d'ingénieur en systèmes embarqués. Mon parcours académique et mes expériences professionnelles m'ont permis de développer une expertise en conception de cartes électroniques et en programmation de microcontrôleurs.\n\nDurant mon alternance chez Schneider Electric, j'ai conçu et réalisé un système de monitoring de consommation énergétique basé sur un microcontrôleur STM32. Ce projet incluait la conception du PCB sous Altium Designer, le développement du firmware en C embarqué et l'intégration d'un module de communication LoRaWAN pour la transmission des données.\n\nJ'ai également acquis des compétences en automatisme industriel, notamment la programmation d'automates Siemens (TIA Portal) et la conception de systèmes SCADA.\n\nVotre entreprise étant un acteur majeur de la transition énergétique, je serais honoré de contribuer à vos projets de smart grid et d'IoT industriel.\n\nDans l'attente de votre retour, veuillez agréer mes salutations respectueuses.",
+    "source_type": "ia",
+    "domain": "Electrique",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe viens de terminer mon diplôme d'ingénieur en électrotechnique à l'ENSEM Nancy et je cherche mon premier emploi dans le domaine des énergies renouvelables. Votre offre d'ingénieur études photovoltaïques correspond bien à ce que je recherche.\n\nPendant mon stage de fin d'études dans un bureau d'études spécialisé en solaire, j'ai dimensionné trois installations photovoltaïques en autoconsommation pour des sites industriels. J'ai utilisé PVsyst pour les simulations de productible et j'ai réalisé les schémas unifilaires sous AutoCAD Electrical.\n\nCe que j'ai aimé dans ce stage, c'est le contact avec les clients et la partie terrain. On ne fait pas que du calcul, on va aussi sur site pour les relevés et on doit expliquer nos choix techniques de manière simple. C'est un aspect du métier qui me plaît vraiment.\n\nJe suis motivé, j'apprends vite, et je suis prêt à me déplacer sur les chantiers.\n\nBien à vous",
+    "source_type": "ia",
+    "domain": "Electrique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nArchitecte diplômée d'État de l'ENSA Paris-Belleville, je souhaite intégrer votre agence en tant que collaboratrice sur vos projets de réhabilitation du patrimoine bâti. Votre approche respectueuse de l'existant, alliant préservation architecturale et performance énergétique, résonne profondément avec ma vision du métier.\n\nMon projet de fin d'études portait sur la reconversion d'une friche industrielle en tiers-lieu culturel à Pantin. Ce travail m'a confrontée aux enjeux de la réhabilitation : diagnostic structurel, gestion des contraintes réglementaires ABF, insertion urbaine et programmation participative. J'ai développé une maîtrise avancée des logiciels Revit, ArchiCAD et Rhino/Grasshopper.\n\nDurant ma mise en situation professionnelle chez une agence spécialisée en HQE, j'ai participé à la conception de logements collectifs passifs. J'ai notamment réalisé les simulations thermiques dynamiques et contribué à l'obtention du label E+C- niveau E3C2.\n\nL'architecture, pour moi, est un acte de responsabilité envers les usagers et l'environnement. Je serais ravie de mettre cette conviction au service de vos projets.\n\nVeuillez recevoir, Madame, Monsieur, mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Architecture",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis un jeune architecte passionné par le design d'intérieur et l'architecture commerciale. J'ai obtenu mon diplôme à l'ENSA Toulouse il y a un an et j'ai depuis travaillé en freelance sur quelques projets de réaménagement de commerces.\n\nCe qui me plaît dans votre agence, c'est votre travail sur les espaces de coworking. J'ai visité celui que vous avez réalisé rue du Faubourg Saint-Antoine et j'ai trouvé l'agencement des espaces vraiment bien pensé, surtout la manière dont vous avez joué avec la lumière naturelle pour créer des ambiances différentes selon les zones.\n\nDe mon côté, j'ai un bon niveau sur SketchUp, Revit et les rendus V-Ray. J'ai aussi une sensibilité pour le design durable — j'essaie toujours de proposer des matériaux biosourcés ou recyclés quand c'est possible.\n\nJe serais vraiment enthousiaste de rejoindre votre équipe et d'apprendre à vos côtés.\n\nÀ bientôt j'espère,\nCordialement",
+    "source_type": "ia",
+    "domain": "Architecture",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nÉtudiant en dernière année de Master Finance d'Entreprise à l'Université Paris-Dauphine, je me permets de postuler au programme Graduate Analyst de votre banque d'investissement. Mon parcours combine une solide formation quantitative et des expériences pratiques en analyse financière.\n\nLors de mon stage chez Société Générale CIB au sein de l'équipe Structured Finance, j'ai participé à l'analyse et à la structuration de financements d'actifs dans le secteur des énergies renouvelables. J'ai réalisé des modèles financiers sous Excel/VBA pour évaluer la rentabilité de projets éoliens, en intégrant les mécanismes de complément de rémunération et les scénarios de prix de marché.\n\nMa formation m'a également permis de développer des compétences en programmation Python pour l'analyse de données financières, en comptabilité IFRS et en évaluation d'entreprises par les méthodes DCF et multiples.\n\nVotre établissement représente pour moi l'opportunité d'évoluer dans un environnement international exigeant où je pourrai développer mon expertise en finance structurée.\n\nJe reste à votre disposition pour un entretien.\n\nVeuillez agréer, Madame, Monsieur, l'expression de mes sentiments les meilleurs.",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis diplômé d'une école de commerce et je cherche un poste de contrôleur de gestion junior. Votre offre m'a attiré parce que vous travaillez dans l'industrie agroalimentaire, un secteur qui m'intéresse depuis mon stage chez Danone.\n\nPendant ce stage, j'ai aidé à mettre en place un nouveau tableau de bord de suivi des marges par gamme de produits. Concrètement, j'ai passé beaucoup de temps à nettoyer les données SAP, à comprendre la logique de répartition des coûts indirects, et à construire des reportings clairs pour les directeurs d'usine. C'était formateur parce que j'ai dû apprendre à vulgariser les chiffres pour des gens qui ne sont pas financiers.\n\nJe maîtrise Excel à un niveau avancé (TCD, Power Query, macros VBA), je me débrouille bien sur SAP et j'ai commencé à apprendre Power BI en autodidacte.\n\nCe que je recherche, c'est un poste où je serai au contact des opérationnels et où je pourrai avoir un vrai impact sur les décisions.\n\nMerci pour votre temps,\nCordialement",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nTitulaire du DSCG et actuellement en cours d'obtention du DEC, je souhaite rejoindre votre cabinet d'expertise comptable en tant que collaborateur confirmé. Mon expérience de trois ans en cabinet m'a permis de gérer en autonomie un portefeuille de TPE et PME couvrant divers secteurs d'activité.\n\nMes compétences s'étendent de la tenue comptable à l'établissement des liasses fiscales, en passant par les situations intermédiaires, le conseil en gestion et l'accompagnement à la création d'entreprise. Je maîtrise les logiciels Sage, Cegid et Pennylane, ainsi que les outils de dématérialisation des factures conformément à la réforme 2026.\n\nCe qui me distingue, je crois, c'est ma capacité à entretenir une relation de confiance avec les clients. La comptabilité est un métier technique, certes, mais c'est avant tout un métier de conseil et d'accompagnement humain.\n\nJe serais heureux de rejoindre une structure à taille humaine comme la vôtre, où la proximité avec les dirigeants permet un conseil véritablement personnalisé.\n\nDans l'attente de vous rencontrer, je vous prie d'agréer mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nDiplômée d'un Master en Gestion des Ressources Humaines de l'IAE de Lyon, je souhaite postuler au poste de chargée de recrutement au sein de votre direction des ressources humaines. Ma formation et mes expériences m'ont permis d'acquérir une vision complète du processus de recrutement, de la définition du besoin à l'intégration du collaborateur.\n\nLors de mon stage chez Adecco, j'ai géré en autonomie le recrutement de profils intérimaires dans les secteurs de la logistique et de l'industrie. J'ai conduit plus de 200 entretiens, rédigé des annonces sur différents jobboards et développé une stratégie de sourcing sur LinkedIn qui a permis de réduire le délai moyen de recrutement de 18 à 12 jours.\n\nJe suis particulièrement intéressée par les enjeux de marque employeur et de diversité en entreprise. Mon mémoire de Master portait d'ailleurs sur l'impact des biais cognitifs dans les processus de sélection et les stratégies pour les atténuer.\n\nVotre entreprise, engagée dans une politique RH inclusive et innovante, constitue un environnement dans lequel je m'épanouirais pleinement.\n\nVeuillez agréer, Madame, Monsieur, l'expression de ma considération distinguée.",
+    "source_type": "ia",
+    "domain": "RH_Management",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe me permets de vous contacter suite à votre annonce pour un poste d'assistant RH. Je viens de finir ma licence en gestion à l'université de Nanterre et je cherche une première expérience pour confirmer mon orientation vers les ressources humaines.\n\nJ'ai fait un stage de trois mois dans une PME de 80 salariés où j'ai touché un peu à tout : administration du personnel, préparation de la paie avec le prestataire, rédaction de contrats de travail, et organisation des entretiens annuels. C'était intense mais ça m'a conforté dans mon choix.\n\nCe que j'aime dans les RH, c'est qu'on est au carrefour de plein de choses : le droit du travail, la psychologie, la stratégie d'entreprise. Chaque jour est différent et on a un vrai impact sur la vie des gens.\n\nJe suis organisé, discret — parce que la confidentialité c'est la base en RH — et j'ai envie d'apprendre.\n\nMerci d'avance pour votre attention.\nBien cordialement",
+    "source_type": "ia",
+    "domain": "RH_Management",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nGéologue de formation, diplômé de l'Université de Montpellier en Sciences de la Terre et de l'Environnement, je souhaite intégrer votre bureau d'études en tant qu'ingénieur géologue. Mon parcours m'a conduit à me spécialiser en hydrogéologie et en géologie de l'ingénieur.\n\nMon projet de fin d'études, réalisé au sein du BRGM, portait sur la modélisation des écoulements souterrains dans un aquifère karstique du sud de la France. J'ai utilisé le logiciel MODFLOW couplé à des données piézométriques de terrain pour calibrer un modèle prédictif de la ressource en eau.\n\nDurant mes stages et missions de terrain, j'ai réalisé des cartographies géologiques, des levés structuraux, des sondages destructifs et des essais de pompage. J'ai également participé à des études d'impact environnemental pour des projets d'aménagement en zone alluviale.\n\nVotre expertise reconnue dans le domaine des études hydrogéologiques et de la gestion durable des ressources en eau m'incite à souhaiter rejoindre votre équipe.\n\nJe reste disponible pour tout échange complémentaire.\n\nVeuillez agréer mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Geologie",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis passionné de géologie depuis que j'ai ramassé ma première ammonite à l'âge de 8 ans. Aujourd'hui diplômé d'un Master en géosciences appliquées, je cherche un poste dans l'exploration minière.\n\nMon stage au Maroc dans une mine de phosphates a été déterminant. Pendant quatre mois, j'ai participé aux campagnes de sondages carottés, réalisé les descriptions lithologiques et contribué à la mise à jour du modèle géologique 3D sous Leapfrog. Le terrain, la poussière, les journées longues — c'est exactement ce que j'aime.\n\nJ'ai aussi une bonne base en géochimie analytique (XRF, ICP-MS) acquise pendant mon mémoire sur la caractérisation des terres rares dans les carbonatites. Et je me débrouille en SIG avec QGIS.\n\nJe suis mobile, prêt à partir à l'international, et je parle français, anglais et arabe.\n\nN'hésitez pas à me contacter si mon profil vous intéresse.\n\nCordialement",
+    "source_type": "ia",
+    "domain": "Geologie",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nTitulaire d'un Master en Supply Chain Management de KEDGE Business School, je souhaite postuler au poste de coordinateur logistique au sein de votre plateforme de distribution. Mon parcours allie formation théorique en gestion des flux et expérience opérationnelle en entrepôt.\n\nLors de mon alternance chez Amazon Logistics, j'ai occupé le poste d'assistant operations manager sur le site de Brétigny-sur-Orge. J'ai supervisé une équipe de 25 préparateurs de commandes, optimisé les parcours de picking à l'aide de l'outil WMOS et contribué à l'amélioration continue des indicateurs de productivité. Le taux de service du quai dont j'étais responsable est passé de 96.2% à 98.7% en six mois.\n\nMa formation m'a également permis de maîtriser les outils SAP MM/WM, les méthodologies Lean Six Sigma (certification Green Belt) et les principes de gestion de la demande et de planification S&OP.\n\nVotre groupe, acteur majeur de la grande distribution, offre des défis logistiques passionnants que je serais enthousiaste de relever.\n\nJe me tiens à votre entière disposition.\n\nVeuillez agréer, Madame, Monsieur, mes salutations respectueuses.",
+    "source_type": "ia",
+    "domain": "Logistique",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe candidate pour le poste de responsable transport que vous proposez. J'ai cinq ans d'expérience en logistique, d'abord comme exploitant transport puis comme adjoint au responsable d'exploitation chez un prestataire 3PL.\n\nCe que j'ai appris sur le terrain, c'est que la logistique c'est avant tout de la gestion humaine. On peut avoir le meilleur TMS du monde, si les chauffeurs ne sont pas impliqués et les clients pas écoutés, ça ne marche pas. J'ai toujours mis un point d'honneur à maintenir un lien direct avec les conducteurs et à résoudre les problèmes rapidement.\n\nConcrètement, je gère aujourd'hui un parc de 40 véhicules, je planifie les tournées de livraison en Île-de-France et je négocie les tarifs avec les affrétés. J'ai aussi mis en place un suivi de la consommation de carburant qui a permis une économie de 8% sur un an grâce à l'optimisation des itinéraires.\n\nJe connais bien les réglementations transport (RSE, temps de conduite, ADR) et je maîtrise les logiciels TMS, SAP TM et Excel avancé.\n\nDisponible pour en discuter quand vous le souhaitez.\n\nBien à vous",
+    "source_type": "ia",
+    "domain": "Logistique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Objet : Candidature développeur Python junior\n\nMadame, Monsieur,\n\nJe suis récemment diplômé d'un DUT Informatique et je recherche un premier poste de développeur Python. J'ai réalisé plusieurs projets en Django et Flask pendant ma formation, ainsi qu'un projet personnel d'API de recommandation de films utilisant collaborative filtering.\n\nJe suis motivé, autonome dans mon apprentissage et familier avec les pratiques Git, Docker et les tests automatisés.\n\nÀ votre disposition pour un entretien.\n\nCordialement,",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nPermettez-moi de vous adresser ma candidature pour le poste d'auditeur junior au sein de votre cabinet. Étudiant en Master CCA à l'Université Paris-Saclay, je prépare simultanément le DSCG et je suis à la recherche d'un contrat en alternance pour approfondir ma pratique de l'audit légal.\n\nMon premier stage en cabinet, effectué chez Mazars dans le département Audit PME-ETI, m'a permis de participer à six missions de commissariat aux comptes dans des secteurs variés : industrie manufacturière, négoce international et association loi 1901. J'y ai développé mes compétences en contrôle des comptes, revue analytique, circularisation des tiers et rédaction de notes de synthèse.\n\nCette expérience m'a révélé l'importance de la rigueur méthodologique dans l'audit, mais aussi la dimension relationnelle du métier. Chaque mission est l'occasion de comprendre un nouveau business model, d'identifier les risques spécifiques et de dialoguer avec les dirigeants sur leurs problématiques financières.\n\nMa maîtrise des normes ISA et du référentiel comptable français, combinée à ma connaissance des outils CAAT et de la data analytics appliquée à l'audit, me permettrait de contribuer efficacement à vos missions dès ma prise de poste.\n\nVotre cabinet, reconnu pour la qualité de sa formation et la diversité de ses mandats, constitue l'environnement idéal pour développer mon expertise.\n\nVeuillez agréer, Madame, Monsieur, l'expression de ma haute considération.",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Bonjour,\n\nJ'ai vu que vous cherchiez quelqu'un pour gérer la formation et le développement des compétences. Ça tombe bien, c'est exactement ce qui me passionne en RH.\n\nAprès un Master en management des RH à l'IGS, j'ai travaillé deux ans comme chargée de formation dans un groupe industriel de 2000 salariés. J'ai piloté le plan de développement des compétences, géré les relations avec les OPCO, déployé une plateforme e-learning et animé des sessions de formation interne sur les soft skills.\n\nCe qui me motive dans la formation, c'est de voir les gens progresser. Quand un manager qui avait du mal avec ses entretiens annuels revient me dire que ça s'est bien passé grâce à la formation qu'on a mise en place, c'est gratifiant.\n\nJe suis à l'aise avec les outils digitaux (Cornerstone, 360Learning, Klaxoon) et j'ai une certification en ingénierie pédagogique.\n\nOn en discute ?\n\nÀ bientôt",
+    "source_type": "ia",
+    "domain": "RH_Management",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nIngénieur structure béton armé, je souhaite rejoindre votre entreprise de préfabrication. Diplômé de l'ESTP Paris, je me suis spécialisé dans le calcul et le dimensionnement d'éléments préfabriqués en béton précontraint.\n\nMa dernière mission en tant qu'ingénieur calcul chez un fabricant de poutres précontraintes m'a permis de maîtriser les calculs selon l'Eurocode 2, la vérification à l'ELS et l'ELU, ainsi que les particularités du béton précontraint par pré-tension et post-tension. J'ai dimensionné plus de 150 éléments pour des bâtiments industriels et commerciaux.\n\nJe maîtrise les logiciels Robot Structural Analysis, SCIA et Advance Design, ainsi que les outils de dessin Tekla Structures et Revit pour la coordination BIM.\n\nVotre entreprise est leader dans son secteur et je serais honoré d'y mettre mes compétences au service de projets ambitieux.\n\nVeuillez agréer mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Civil",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis électricien de formation (BTS Électrotechnique) et j'ai repris mes études en licence pro systèmes automatisés. Je cherche maintenant un poste de technicien en automatisme.\n\nAvant de reprendre les études, j'ai travaillé trois ans sur des chantiers tertiaires et industriels. C'est cette expérience terrain qui m'a donné envie d'aller plus loin dans l'automatisme. Quand j'installais des armoires électriques, je voyais les automaticiens programmer les automates et je trouvais ça fascinant.\n\nAujourd'hui je sais programmer en Ladder et en Structured Text sur des automates Schneider (Unity Pro) et Siemens (TIA Portal). J'ai fait mon projet de fin de licence sur l'automatisation d'une ligne de conditionnement, avec supervision sous VIJEO Designer.\n\nMon atout, c'est que je connais les deux mondes : l'électricité de puissance et l'automatisme. Ça me permet de comprendre une installation dans sa globalité.\n\nDisponible rapidement, j'aimerais beaucoup en discuter avec vous.\n\nCordialement",
+    "source_type": "ia",
+    "domain": "Electrique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nJe me permets de vous soumettre ma candidature pour rejoindre votre agence en tant qu'architecte collaborateur. Diplômé de l'ENSA Marseille et habilité à exercer en nom propre (HMONP), je dispose de deux années d'expérience en maîtrise d'œuvre de projets de logements.\n\nMon parcours m'a conduit à travailler sur des projets de taille variée, du pavillon individuel à la résidence de 45 logements collectifs. J'apprécie particulièrement la phase conception, le moment où le programme se transforme en espace habité. Mais j'ai aussi appris à aimer le suivi de chantier, avec ses imprévus et la nécessité de trouver des solutions rapidement.\n\nUn projet dont je suis particulièrement fier : la réhabilitation d'une bastide provençale en chambres d'hôtes. Le dialogue entre l'ancien et le contemporain, les contraintes du bâti existant transformées en qualités architecturales — c'est le type de défi qui me stimule.\n\nJe maîtrise Revit en BIM niveau 2, ArchiCAD, le pack Adobe et les outils de rendu Lumion et Enscape.\n\nJe serais ravi de vous montrer mon book et d'échanger sur vos projets en cours.\n\nBien respectueusement,",
+    "source_type": "ia",
+    "domain": "Architecture",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nGéologue spécialisé en géophysique appliquée, je postule pour le poste de chargé d'études que vous proposez. Formé à l'Université de Pau et des Pays de l'Adour, j'ai une solide expérience des méthodes géophysiques de surface : sismique réfraction, tomographie électrique, radar géologique et méthodes électromagnétiques.\n\nMon dernier contrat au sein d'un bureau de géophysique m'a permis de réaliser plus de 30 campagnes de mesures pour des projets variés : reconnaissance de fondations, détection de cavités, recherche d'eau et diagnostic de digues. Je maîtrise les logiciels de traitement Res2DInv, ReflexW et Rayfract.\n\nJe suis autonome sur le terrain, titulaire du permis B et de l'AIPR, et j'ai l'habitude de rédiger les rapports d'études de A à Z.\n\nDisponible immédiatement.\n\nSalutations distinguées.",
+    "source_type": "ia",
+    "domain": "Geologie",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nFort d'une formation en logistique industrielle (DUT GLT + licence pro management de la chaîne logistique) et de trois années d'expérience en entrepôt, je me porte candidat au poste de responsable préparation de commandes.\n\nCe que mes expériences m'ont appris, c'est que l'optimisation logistique repose autant sur l'humain que sur les outils. Dans mon poste actuel de chef d'équipe chez un prestataire logistique, je manage 15 caristes et préparateurs. J'ai mis en place un système de rotation des postes qui a réduit les TMS de 30% et amélioré la motivation de l'équipe. En parallèle, j'ai travaillé avec le service méthodes pour reconfigurer les zones de stockage selon une analyse ABC, ce qui a augmenté la productivité de 12%.\n\nJe connais bien les WMS (Manhattan, Reflex), je suis certifié CACES 1 3 5 et j'ai une bonne maîtrise d'Excel pour le reporting opérationnel. Mais surtout, j'ai le goût du terrain et de la résolution de problèmes concrets.\n\nVotre plateforme logistique multi-clients représente exactement le type de défi que je recherche pour la suite de ma carrière.\n\nJe vous remercie pour votre attention et reste à votre disposition.\n\nBien cordialement,",
+    "source_type": "ia",
+    "domain": "Logistique",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis technicien en maintenance industrielle avec un BTS MI et deux ans d'expérience dans l'agroalimentaire. Je cherche un nouveau challenge dans l'industrie automobile.\n\nDans mon poste actuel, je fais de la maintenance préventive et curative sur des lignes de conditionnement. J'ai aussi participé à l'installation d'une nouvelle ligne de production et à la mise en service des automates. Ce qui me plaît, c'est le diagnostic de panne — c'est un peu comme résoudre une enquête.\n\nJe connais la mécanique, l'hydraulique, le pneumatique et les bases de l'électricité industrielle. J'ai aussi des notions en automatisme Siemens.\n\nVotre usine m'intéresse parce que vous avez des équipements variés et modernes, et ça me permettrait de monter en compétences.\n\nMerci !\nCordialement",
+    "source_type": "ia",
+    "domain": "Mecanique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nLe poste d'ingénieur données que vous proposez a immédiatement attiré mon attention. Issu d'une formation en mathématiques appliquées et informatique à l'Université de Nice, j'ai orienté ma carrière vers l'ingénierie des données et les architectures big data.\n\nAu cours de mes deux années chez un éditeur de logiciels SaaS, j'ai conçu et maintenu des pipelines ETL traitant plus de 50 millions d'événements par jour. J'ai migré l'infrastructure data d'une architecture batch classique vers une architecture événementielle basée sur Apache Kafka et Apache Flink, réduisant la latence de traitement de 4 heures à moins de 5 minutes.\n\nCe qui m'anime dans ce métier, c'est la résolution de problèmes à l'intersection du code, de l'infrastructure et de la donnée. Chaque jeu de données a ses pièges, chaque pipeline a ses points de fragilité, et c'est en comprenant finement ces enjeux qu'on construit des systèmes fiables.\n\nJe maîtrise Python, SQL, Spark, Airflow, dbt et les environnements cloud AWS (Redshift, S3, Glue, Lambda). Je suis également familier avec les pratiques DataOps et le versioning de données avec DVC.\n\nJe serais ravi de contribuer à la croissance de votre plateforme data.\n\nBien cordialement,",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Bonjour,\n\nJe postule pour le stage en analyse crédit que vous proposez pour le premier semestre. Je suis en Master 1 Banque-Finance à l'Université de Strasbourg.\n\nPour être honnête, ce qui m'attire dans le crédit aux entreprises, c'est l'analyse. Comprendre le business model d'une boîte, éplucher ses comptes, évaluer sa capacité de remboursement — c'est comme assembler un puzzle. Mon cours préféré cette année c'était l'analyse financière, où on décortiquait des cas réels d'entreprises en difficulté.\n\nJ'ai fait un premier stage dans une agence bancaire où j'ai accompagné un chargé de clientèle pro. J'ai appris à lire un bilan, à poser les bonnes questions aux dirigeants et à identifier les signaux d'alerte dans les comptes. C'était court (deux mois) mais ça m'a confirmé que je voulais aller plus loin dans l'analyse.\n\nJe suis sérieux, curieux, et je n'ai pas peur de passer du temps sur un dossier pour bien le comprendre.\n\nMerci d'avance,\nCordialement",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nConsultante RH avec quatre années d'expérience en cabinet de conseil, je souhaite rejoindre votre direction des ressources humaines en tant que responsable développement RH. Mon expertise couvre la gestion des talents, la conduite du changement et le déploiement de politiques de rémunération.\n\nChez mon employeur actuel, j'ai accompagné une dizaine d'entreprises dans leur transformation organisationnelle. Ma mission la plus significative a été le pilotage d'un projet de refonte de la classification des emplois pour un groupe industriel de 3000 salariés, impliquant la cartographie des compétences, la pesée des postes selon la méthode Hay et la négociation d'un nouvel accord de classification avec les partenaires sociaux.\n\nJ'ai appris qu'en RH, la technique ne suffit pas. Le succès d'un projet repose sur la capacité à embarquer les parties prenantes, à écouter les résistances et à construire des solutions qui tiennent compte des réalités du terrain. C'est cette conviction qui guide mon approche.\n\nIntégrer une fonction RH interne me permettrait d'avoir un impact plus durable et d'accompagner les transformations dans la durée, ce qui est ma principale motivation pour ce changement.\n\nJe serais ravie d'échanger avec vous sur les enjeux RH de votre organisation.\n\nRespecteusement,",
+    "source_type": "ia",
+    "domain": "RH_Management",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Bonjour,\n\nJe suis intéressé par votre offre d'approvisionneur. J'ai un BTS Commerce International et j'ai travaillé un an et demi comme assistant achats dans l'import de textile.\n\nMon quotidien c'était de passer des commandes auprès de fournisseurs en Turquie et au Portugal, suivre les expéditions maritimes et routières, gérer les documents douaniers et relancer les fournisseurs en retard. J'ai appris à jongler entre les délais, les incoterms et les fluctuations de change.\n\nCe qui m'a le plus plu, c'est la négociation. J'ai réussi à obtenir une réduction de 12% sur notre principal fournisseur turc en regroupant les commandes et en négociant des MOQ plus adaptés à nos volumes.\n\nJe parle français, anglais et turc, ce qui est un vrai plus dans le sourcing international. Je suis à l'aise sur SAP et sur les outils de suivi logistique.\n\nÀ votre disposition pour en parler.\n\nCordialement",
+    "source_type": "ia",
+    "domain": "Logistique",
+    "style_prompt": "naturel_humain"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nJe suis géologue environnemental avec une spécialisation en sites et sols pollués, et je souhaite rejoindre votre bureau d'études. Diplômé d'un Master en génie de l'environnement de l'Université de Lille, j'ai acquis trois ans d'expérience dans le diagnostic et la réhabilitation de sites contaminés.\n\nMon parcours m'a amené à réaliser plus de 40 diagnostics de pollution (phases 1 et 2) pour des transactions immobilières, des cessations d'activité ICPE et des projets d'aménagement. J'ai piloté des campagnes de prélèvements (sols, eaux souterraines, gaz du sol), interprété les résultats analytiques et rédigé les plans de gestion selon la méthodologie nationale.\n\nLe dossier qui m'a le plus marqué est la réhabilitation d'une ancienne station-service en centre-ville. Entre les contraintes techniques (nappe à 2 mètres, bâti riverain), réglementaires (IEM, ARS) et humaines (inquiétude des riverains), il a fallu faire preuve de pédagogie autant que de technique. C'est ce genre de situation complexe qui rend ce métier passionnant.\n\nJe maîtrise les outils de modélisation RISC et les logiciels SIG, et je suis habilité amiante avec mention.\n\nJe serais heureux de vous rencontrer pour échanger sur vos projets.\n\nBien cordialement,",
+    "source_type": "ia",
+    "domain": "Geologie",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nIngénieur en mécanique des fluides diplômé de l'ISAE-SUPAERO, je souhaite postuler au poste d'ingénieur aérodynamique au sein de votre département R&D. Ma spécialisation en aérodynamique numérique et expérimentale me prépare à contribuer efficacement à l'optimisation de vos produits.\n\nMon projet de fin d'études, réalisé en partenariat avec Dassault Aviation, portait sur l'optimisation multi-objectif d'un profil d'aile transsonique. J'ai couplé un solveur RANS (elsA) avec un algorithme génétique NSGA-II pour explorer l'espace de design et identifier les compromis optimaux entre traînée et portance. Les résultats ont montré une réduction de traînée de 3.2% pour une perte de portance inférieure à 0.5%.\n\nJ'ai également une expérience en soufflerie acquise lors de mon stage au laboratoire de mécanique des fluides de l'École Polytechnique, où j'ai réalisé des mesures PIV et LDV sur des modèles réduits d'ailes.\n\nVotre entreprise, à la pointe de l'innovation aéronautique, offre un cadre de travail stimulant où je pourrais mettre à profit mes compétences.\n\nJe reste à votre disposition.\n\nVeuillez agréer mes sincères salutations.",
+    "source_type": "ia",
+    "domain": "Mecanique",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nJe vous écris pour le poste d'ingénieur conception électrique dans votre bureau d'études ferroviaire. Diplômé de l'ESIEE Paris en systèmes électriques, j'ai deux ans d'expérience dans la conception de systèmes électriques embarqués pour le transport.\n\nChez Alstom, j'ai participé à la conception du schéma électrique de puissance d'un tramway, de la caténaire jusqu'aux moteurs de traction. Mon rôle couvrait le dimensionnement des convertisseurs statiques, la sélection des protections et la rédaction des spécifications de câblage. J'ai aussi travaillé sur la compatibilité électromagnétique, un sujet technique complexe mais crucial en ferroviaire.\n\nUne anecdote qui illustre bien mon quotidien : lors des essais en ligne, nous avons détecté des perturbations sur le système de signalisation causées par les harmoniques du convertisseur auxiliaire. J'ai analysé les spectres de courant, identifié la source et proposé un filtre passif qui a résolu le problème sans modifier le design mécanique existant. C'est ce type de résolution de problèmes que j'affectionne.\n\nJe maîtrise les logiciels ETAP, MATLAB/Simulink et les outils de CAO Electrique SEE Electrical et EPLAN.\n\nDans l'attente de pouvoir échanger avec vous, recevez mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Electrique",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nJeune architecte HMONP, je cherche un poste de collaborateur dans une agence tournée vers l'architecture bioclimatique. Votre travail sur le projet de l'éco-quartier de Bègles m'a particulièrement inspiré.\n\nFormé à l'ENSA Grenoble, j'ai orienté mon parcours vers la conception environnementale. Mon PFE explorait l'habitat participatif en matériaux biosourcés. Maîtrise de Revit, ArchiCAD, SketchUp et simulation thermique sous Pleiades.\n\nDeux ans d'expérience en agence, principalement sur des projets de logements collectifs RT2012/RE2020.\n\nDisponible pour un entretien avec mon portfolio.\n\nCordialement,",
+    "source_type": "ia",
+    "domain": "Architecture",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nJe suis ingénieur en intelligence artificielle, spécialisé dans la vision par ordinateur, et je souhaite intégrer votre équipe de recherche appliquée. Diplômé de l'ENS Paris-Saclay en MVA (Mathématiques, Vision, Apprentissage), j'ai consacré mon stage de recherche à la détection d'objets 3D à partir de nuages de points LiDAR.\n\nMes travaux ont porté sur l'adaptation du modèle PointPillars pour la détection de piétons en environnement urbain dense. J'ai proposé une modification de la fonction de perte intégrant un terme de cohérence temporelle entre frames successives, améliorant l'AP@0.5 de 4.7 points sur le benchmark nuScenes. Ce travail a donné lieu à un article soumis à ECCV 2024.\n\nJe possède une expertise approfondie en PyTorch, OpenCV, Open3D et les frameworks de détection MMDetection3D. Mon expérience couvre également le déploiement de modèles sur GPU embarqué (NVIDIA Jetson) avec TensorRT pour des applications temps réel.\n\nLe positionnement de votre entreprise dans la conduite autonome représente un terrain d'application idéal pour mes compétences.\n\nJe me tiens à votre disposition pour un entretien technique.\n\nRespecteusement,",
+    "source_type": "ia",
+    "domain": "CS_IT",
+    "style_prompt": "eviter_sonner_ia"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nÉtudiant en L3 Économie-Gestion à l'Université d'Aix-Marseille, je recherche un stage d'assistant comptable pour valider mon année. Je souhaite acquérir une première expérience pratique de la comptabilité en cabinet.\n\nJ'ai de solides bases en comptabilité générale, fiscalité des entreprises et droit des sociétés. Je maîtrise les logiciels Sage et Ciel Compta.\n\nSérieux et ponctuel, je suis prêt à m'investir pleinement dans les missions que vous me confierez.\n\nVeuillez agréer mes salutations distinguées.",
+    "source_type": "ia",
+    "domain": "Finance",
+    "style_prompt": "neutre"
+  },
+  {
+    "text": "Madame, Monsieur,\n\nIngénieur supply chain diplômé de l'ISLI (programme supply chain de KEDGE), je souhaite rejoindre votre direction logistique en tant que responsable planification. Mon expertise porte sur la planification de la demande, l'optimisation des stocks et le déploiement de solutions S&OP.\n\nDans mon poste actuel chez un industriel pharmaceutique, j'ai déployé un processus S&OP mensuel impliquant les directions commerciale, production et finance. Ce processus a permis de réduire les stocks de produits finis de 25% tout en maintenant un taux de service de 98.5%. J'ai également implémenté un outil de planification statistique de la demande qui a amélioré la fiabilité des prévisions de 15 points (passant de MAPE 35% à MAPE 20%).\n\nJe suis certifié APICS CPIM et je maîtrise les modules SAP PP/MM, l'outil de planification Kinaxis RapidResponse et les techniques de modélisation prévisionnelle sous R et Python.\n\nLa complexité de votre chaîne logistique multi-pays et la variété de vos gammes de produits représentent un défi stimulant.\n\nÀ votre disposition pour un échange approfondi.\n\nBien cordialement,",
+    "source_type": "ia",
+    "domain": "Logistique",
+    "style_prompt": "eviter_sonner_ia"
+  }
+]

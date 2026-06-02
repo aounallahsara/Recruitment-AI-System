@@ -1,0 +1,47 @@
+{
+  "modele": "style_classifier_v2",
+  "n_test": 349,
+  "distribution": {
+    "humain": 251,
+    "hybride": 90,
+    "ia": 8
+  },
+  "f1_macro": 0.9387,
+  "accuracy": 0.9799,
+  "f1_par_classe": {
+    "humain": 0.986,
+    "hybride": 0.973,
+    "ia": 0.8571
+  },
+  "confusion_matrix": {
+    "labels": [
+      "humain",
+      "hybride",
+      "ia"
+    ],
+    "matrix": [
+      [
+        246,
+        5,
+        0
+      ],
+      [
+        0,
+        90,
+        0
+      ],
+      [
+        2,
+        0,
+        6
+      ]
+    ]
+  },
+  "n_erreurs": 7,
+  "taux_erreur": 0.0201,
+  "comparaison_v1": {
+    "RandomForest_cv_f1": 0.9979,
+    "GradientBoosting_cv_f1": 0.9986,
+    "note": "CV sur données synthétiques + fuite de features (scoring.py == étiqueteur == features d'entrée). Pas généralisable."
+  }
+}

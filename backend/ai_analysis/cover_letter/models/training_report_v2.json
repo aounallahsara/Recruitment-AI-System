@@ -1,0 +1,67 @@
+{
+  "version": "v2",
+  "best_model": "RandomForest",
+  "source_ia": "real_ai_letters_merged.json",
+  "n_samples": 914,
+  "classes": [
+    "humain",
+    "hybride",
+    "ia"
+  ],
+  "class_dist": {
+    "humain": 300,
+    "hybride": 450,
+    "ia": 164
+  },
+  "feature_names": [
+    "burstiness",
+    "repetition_ngram_3",
+    "ratio_ponctuation",
+    "avg_word_len",
+    "ttr",
+    "ratio_majuscules",
+    "longueur_mots",
+    "n_phrases",
+    "perplexite"
+  ],
+  "cv_results": {
+    "LogisticRegression": {
+      "mean": 0.7023797478051577,
+      "std": 0.013163070724987147
+    },
+    "RandomForest": {
+      "mean": 0.9117492328863113,
+      "std": 0.028315133077542395
+    }
+  },
+  "f1_test": 0.9291,
+  "confusion_matrix": {
+    "labels": [
+      "humain",
+      "hybride",
+      "ia"
+    ],
+    "matrix": [
+      [
+        57,
+        2,
+        1
+      ],
+      [
+        0,
+        88,
+        2
+      ],
+      [
+        5,
+        0,
+        28
+      ]
+    ]
+  },
+  "comparaison_v1": {
+    "RandomForest_v1_cv_f1": 0.9979,
+    "GradientBoosting_v1_cv_f1": 0.9986,
+    "note": "Scores v1 = artefacts de fuite (scoring.py == étiqueteur == features). Scores v2 = honnêtes (features indépendantes, données réelles)."
+  }
+}
