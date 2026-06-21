@@ -53,7 +53,7 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
     domaine_nom = serializers.CharField(write_only=True)
     cv                = serializers.FileField(write_only=True)
     lettre_motivation = serializers.FileField(write_only=True)
-    releve_notes      = serializers.FileField(write_only=True)
+    releve_notes      = serializers.FileField(write_only=True, required=False, allow_null=True)
     adresse            = serializers.CharField(write_only=True)
 
     class Meta:
@@ -67,9 +67,11 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
             'encadrant', 'theme', 'lettre_motivation_text',
             'cv', 'lettre_motivation', 'releve_notes','photo', 'source',
         ]
-    photo = serializers.ImageField(write_only=True)
+    photo = serializers.ImageField(write_only=True, required=False, allow_null=True)
 
     def validate_photo(self, file):
+        if file is None:
+            return None
         allowed_types = ['image/jpeg', 'image/png', 'image/jpg']
         if file.content_type not in allowed_types:
             raise serializers.ValidationError('La photo doit être JPG ou PNG.')
@@ -98,6 +100,8 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
         return file
 
     def validate_releve_notes(self, file):
+        if file is None:
+            return None
         if file.content_type != 'application/pdf':
             raise serializers.ValidationError('Le relevé doit être un PDF.')
         if file.size > 5 * 1024 * 1024:
@@ -110,7 +114,8 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
         domaine_nom = validated_data.pop('domaine_nom')
         cv_file     = validated_data.pop('cv')
         lettre_file = validated_data.pop('lettre_motivation')
-        releve_file = validated_data.pop('releve_notes')
+        releve_file = validated_data.pop('releve_notes', None)
+        photo_file  = validated_data.pop('photo', None)
 
         wilaya, _  = Wilaya.objects.get_or_create(nom=wilaya_nom)
         niveau, _  = Niveau.objects.get_or_create(
@@ -128,6 +133,10 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
             **validated_data
         )
 
+        if photo_file:
+            candidature.photo = photo_file
+            candidature.save()
+
         Document.objects.create(
             candidature=candidature,
             type=Document.Type.CV,
@@ -138,11 +147,12 @@ class CandidatureCreateSerializer(serializers.ModelSerializer):
             type=Document.Type.LETTRE,
             fichier=lettre_file
         )
-        Document.objects.create(
-            candidature=candidature,
-            type=Document.Type.RELEVE,
-            fichier=releve_file
-        )
+        if releve_file:
+            Document.objects.create(
+                candidature=candidature,
+                type=Document.Type.RELEVE,
+                fichier=releve_file
+            )
 
         return candidature
 

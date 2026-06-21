@@ -120,6 +120,16 @@ function DashboardAdmin() {
         </nav> */}
 
         <div className="px-4 mt-8">
+          <h3 className="text-sm font-semibold text-gray-500 px-4 mb-2">OUTILS</h3>
+          <button 
+            onClick={() => navigate('/analyse')}
+            className="w-full text-left px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-1 flex items-center gap-2"
+          >
+            <span>🔍</span> Analyse IA
+          </button>
+        </div>
+
+        <div className="px-4 mt-4">
           <h3 className="text-sm font-semibold text-gray-500 px-4 mb-2">SYSTEM</h3>
           <button 
             onClick={() => navigate('/settings')}

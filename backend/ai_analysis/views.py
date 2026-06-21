@@ -114,7 +114,7 @@ def analyze_cv_view(request, pk):
         return Response({'error': f'Fichier introuvable : {pdf_path}'}, status=400)
 
     try:
-        result = analyze_cv(pdf_path)
+        result = analyze_cv(pdf_path, use_bert=True)
     except RuntimeError as e:
         return Response({'error': str(e)}, status=400)
 
@@ -224,7 +224,7 @@ def quick_analyze_lettre(request):
         finally:
             os.unlink(tmp_path)
     else:
-        text = (request.data.get('text') or '').strip()
+        text = (request.data.get('text') or request.data.get('contenu') or '').strip()
 
     if not text or len(text) < 20:
         return Response({'error': 'Texte trop court ou vide (minimum 20 caractères)'}, status=400)

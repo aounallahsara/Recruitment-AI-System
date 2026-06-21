@@ -149,7 +149,6 @@ function AdminAddCandidate({ onBack, onSuccess }) {
     // Vérifier les fichiers
     if (!files.cv) newErrors.cv = 'Le CV est obligatoire'
     if (!files.lettre_motivation) newErrors.lettre_motivation = 'La lettre de motivation est obligatoire'
-    if (!files.releve_notes) newErrors.releve_notes = 'Le relevé de notes est obligatoire'
 
     // Vérifier l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -194,7 +193,7 @@ if (files.photo) {
 }
 // Ajouter tous les autres champs sauf wilaya, niveau, domaine
 Object.keys(formData).forEach(key => {
-  if (!['wilaya', 'niveau', 'domaine'].includes(key)) {
+  if (!['wilaya', 'niveau', 'domaine'].includes(key) && formData[key]) {
     formDataToSend.append(key, formData[key])
   }
 })
@@ -202,10 +201,19 @@ Object.keys(formData).forEach(key => {
 // Source = admin
 formDataToSend.append('source', 'admin')
       
-      // Ajouter les fichiers
-      formDataToSend.append('cv', files.cv)
-      formDataToSend.append('lettre_motivation', files.lettre_motivation)
-      formDataToSend.append('releve_notes', files.releve_notes)
+      // Ajouter les fichiers requis et optionnels uniquement si présents
+      if (files.cv) {
+        formDataToSend.append('cv', files.cv)
+      }
+      if (files.lettre_motivation) {
+        formDataToSend.append('lettre_motivation', files.lettre_motivation)
+      }
+      if (files.releve_notes) {
+        formDataToSend.append('releve_notes', files.releve_notes)
+      }
+      if (files.photo) {
+        formDataToSend.append('photo', files.photo)
+      }
 
       // Appeler l'API
       const response = await createCandidature(formDataToSend)
@@ -678,7 +686,7 @@ formDataToSend.append('source', 'admin')
               {/* Relevé notes */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Relevé de notes * (max 5 MB)
+                  Relevé de notes (optionnel, max 5 MB)
                 </label>
                 <input
                   type="file"

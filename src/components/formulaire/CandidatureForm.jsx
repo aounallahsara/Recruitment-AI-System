@@ -489,21 +489,19 @@ data.append('source', 'formulaire')
           />
           
           <FileUpload
-            label="Relevé de notes (PDF)"
+            label="Relevé de notes (PDF) (optionnel)"
             accept=".pdf"
             onChange={handleFileChange('releve_notes')}
-            required
           />
           {/* Photo du candidat */}
 <div className="mb-4">
   <label className="block text-gray-700 text-sm mb-2">
-    Photo du candidat <span className="text-red-500">*</span>
+    Photo du candidat <span className="text-gray-400">(optionnel)</span>
   </label>
   <input
     type="file"
     accept=".jpg,.jpeg,.png"
     onChange={(e) => setFormData({...formData, photo: e.target.files[0]})}
-    required
     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
   />
   <p className="text-xs text-gray-500 mt-1">JPG ou PNG, max 2 MB</p>

@@ -11,7 +11,7 @@ class GeminiService:
             raise ValueError("GEMINI_API_KEY non trouvée dans le fichier .env")
         
         genai.configure(api_key=api_key)
-        # On utilise 2.0-flash (2.5 n'existe pas encore ou est en preview)
+        # On utilise 1.5-flash (modèle le plus stable)
         self.model = genai.GenerativeModel('gemini-2.5-flash')
     
     def generate_response(self, question, context):

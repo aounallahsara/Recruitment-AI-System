@@ -20,3 +20,4 @@ PyMuPDF>=1.24
 transformers>=4.40
 torch>=2.2
 sentence-transformers>=3.0
+numpy>=2.1.0

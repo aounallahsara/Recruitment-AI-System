@@ -7,10 +7,10 @@ const iconExists = fs.existsSync(ICON_PATH)
 
 function createWindow() {
   const win = new BrowserWindow({
-    width:  1280,
-    height: 800,
-    minWidth:  900,
-    minHeight: 600,
+    width:  1000,
+    height: 680,
+    minWidth:  780,
+    minHeight: 540,
     title: 'RecrutIA',
     ...(iconExists ? { icon: ICON_PATH } : {}),
     webPreferences: {

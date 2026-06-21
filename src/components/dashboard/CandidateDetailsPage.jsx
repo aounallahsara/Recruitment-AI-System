@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { updateStatut } from '../../services/dashboardService'
 import api from '../../services/api'
 
@@ -109,9 +109,74 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
   const [showStatutMenu, setShowStatutMenu] = useState(false)
   const [isSendingEmail, setIsSendingEmail] = useState(false)
 
+  // ── Analyse IA ────────────────────────────────────────────────────
+  const [analyseCv, setAnalyseCv] = useState(null)
+  const [analyseLettre, setAnalyseLettre] = useState(null)
+  const [scoreCv, setScoreCv] = useState(null)
+  const [loadingAnalyseCv, setLoadingAnalyseCv] = useState(false)
+  const [loadingAnalyseLettre, setLoadingAnalyseLettre] = useState(false)
+
   // ── Popup motif de refus ──────────────────────────────
   const [showRefusModal, setShowRefusModal] = useState(false)
   const [motifRefus, setMotifRefus] = useState('')
+
+  // Charger les analyses existantes au montage
+  useEffect(() => {
+    loadAnalyses()
+  }, [candidate.id])
+
+  const loadAnalyses = async () => {
+    try {
+      const resCv = await api.get(`/ai_analysis/candidatures/${candidate.id}/cv/result/`)
+      setAnalyseCv(resCv.data)
+      if (resCv.data.score_cv) {
+        setScoreCv(resCv.data.score_cv)
+      }
+    } catch (error) {
+      console.log('Pas d\'analyse CV encore')
+    }
+
+    try {
+      const resLettre = await api.get(`/ai_analysis/candidatures/${candidate.id}/lettre/result/`)
+      setAnalyseLettre(resLettre.data)
+    } catch (error) {
+      console.log('Pas d\'analyse lettre encore')
+    }
+  }
+
+  const handleAnalyzeCv = async () => {
+    setLoadingAnalyseCv(true)
+    setMessage({ type: 'info', text: '⏳ Analyse en cours... (peut prendre 1-2 min à la première exécution)' })
+    try {
+      const response = await api.post(`/ai_analysis/candidatures/${candidate.id}/cv/`)
+      setAnalyseCv(response.data)
+      if (response.data.score_cv) {
+        setScoreCv(response.data.score_cv)
+      }
+      setMessage({ type: 'success', text: '✅ Analyse CV réalisée avec succès !' })
+    } catch (error) {
+      const msg = error.response?.data?.error || 'Erreur lors de l\'analyse CV'
+      setMessage({ type: 'error', text: `❌ ${msg}` })
+      console.error('Erreur analyse CV:', error)
+    } finally {
+      setLoadingAnalyseCv(false)
+    }
+  }
+
+  const handleAnalyzeLettre = async () => {
+    setLoadingAnalyseLettre(true)
+    try {
+      const response = await api.post(`/ai_analysis/candidatures/${candidate.id}/lettre/`)
+      setAnalyseLettre(response.data)
+      setMessage({ type: 'success', text: '✅ Analyse lettre réalisée avec succès !' })
+    } catch (error) {
+      const msg = error.response?.data?.error || 'Erreur lors de l\'analyse lettre'
+      setMessage({ type: 'error', text: `❌ ${msg}` })
+      console.error('Erreur analyse lettre:', error)
+    } finally {
+      setLoadingAnalyseLettre(false)
+    }
+  }
 
   const getInitials = (prenom, nom) => `${prenom[0]}${nom[0]}`.toUpperCase()
 
@@ -262,7 +327,9 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
 
       {message.text && (
         <div className={`max-w-4xl mx-auto mb-4 p-4 rounded-lg ${
-          message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+          message.type === 'success' ? 'bg-green-100 text-green-800' : 
+          message.type === 'error' ? 'bg-red-100 text-red-800' :
+          'bg-blue-100 text-blue-800'
         }`}>
           {message.text}
         </div>
@@ -383,6 +450,238 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
               ) : null
             })}
           </div>
+        </div>
+
+        {/* ── ANALYSE IA ─────────────────────────────────── */}
+        <div className="p-6 border-b bg-gradient-to-r from-purple-50 to-blue-50">
+          <h4 className="text-sm font-semibold text-gray-500 mb-4 uppercase">🤖 Analyse IA</h4>
+          
+          {/* Boutons d'analyse */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <button
+              onClick={handleAnalyzeCv}
+              disabled={loadingAnalyseCv}
+              className="flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 font-medium transition disabled:opacity-50 disabled:cursor-wait"
+            >
+              {loadingAnalyseCv ? '⏳ Analyse CV...' : '📄 Analyser le CV'}
+            </button>
+            <button
+              onClick={handleAnalyzeLettre}
+              disabled={loadingAnalyseLettre}
+              className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium transition disabled:opacity-50 disabled:cursor-wait"
+            >
+              {loadingAnalyseLettre ? '⏳ Analyse lettre...' : '📝 Analyser la lettre'}
+            </button>
+          </div>
+
+          {/* Résultats Analyse CV */}
+          {analyseCv && (
+            <div className="mb-6 space-y-4">
+              <div className="p-5 bg-white rounded-lg border-2 border-red-200">
+                <div className="flex items-center justify-between mb-4">
+                  <h5 className="text-lg font-bold text-red-700">📊 Analyse CV</h5>
+                  <span className="text-xs text-gray-500">{new Date(analyseCv.date_analyse).toLocaleDateString('fr-FR')}</span>
+                </div>
+                
+                {/* Score CV si disponible */}
+                {scoreCv && (
+                  <div className="mb-4 p-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-red-100 text-xs uppercase font-bold">Score CV Global</p>
+                        <p className="text-sm opacity-90">Niveau: <span className="font-bold uppercase">{scoreCv.level}</span></p>
+                      </div>
+                      <div className="text-4xl font-black">{scoreCv.score_cv}<span className="text-lg opacity-70">/100</span></div>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3 text-xs">
+                      <div className="bg-red-600 bg-opacity-50 p-2 rounded">
+                        <p className="opacity-75">Compétences</p>
+                        <p className="font-bold">{scoreCv.score_competences}</p>
+                      </div>
+                      <div className="bg-red-600 bg-opacity-50 p-2 rounded">
+                        <p className="opacity-75">Formation</p>
+                        <p className="font-bold">{scoreCv.score_formation}</p>
+                      </div>
+                      <div className="bg-red-600 bg-opacity-50 p-2 rounded">
+                        <p className="opacity-75">Expérience</p>
+                        <p className="font-bold">{scoreCv.score_experience}</p>
+                      </div>
+                      <div className="bg-red-600 bg-opacity-50 p-2 rounded">
+                        <p className="opacity-75">Soft Skills</p>
+                        <p className="font-bold">{scoreCv.score_soft_skills}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Informations personnelles et académiques */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                  <div className="p-3 bg-red-50 rounded">
+                    <p className="text-xs text-gray-500 font-semibold mb-1">NOM DÉTECTÉ</p>
+                    <p className="text-gray-900">{analyseCv.nom_detecte || '—'}</p>
+                  </div>
+                  <div className="p-3 bg-red-50 rounded">
+                    <p className="text-xs text-gray-500 font-semibold mb-1">DOMAINE DÉTECTÉ</p>
+                    <p className="text-gray-900 font-medium">{analyseCv.domaine_detecte || '—'}</p>
+                    {analyseCv.domaine_confiance && (
+                      <p className="text-xs text-gray-600 mt-1">Confiance: {(analyseCv.domaine_confiance * 100).toFixed(0)}%</p>
+                    )}
+                  </div>
+                  <div className="p-3 bg-red-50 rounded">
+                    <p className="text-xs text-gray-500 font-semibold mb-1">DIPLÔME</p>
+                    <p className="text-gray-900">{analyseCv.diplome || '—'}</p>
+                  </div>
+                  <div className="p-3 bg-red-50 rounded">
+                    <p className="text-xs text-gray-500 font-semibold mb-1">UNIVERSITÉ</p>
+                    <p className="text-gray-900">{analyseCv.universite_detectee || '—'}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Compétences */}
+              {analyseCv.competences && analyseCv.competences.length > 0 && (
+                <div className="p-4 bg-white rounded-lg border-2 border-red-100">
+                  <p className="text-sm font-bold text-red-700 mb-3">🎯 Compétences Détectées ({analyseCv.competences.length})</p>
+                  <div className="flex flex-wrap gap-2">
+                    {analyseCv.competences.map((skill, idx) => (
+                      <span key={idx} className="text-xs bg-red-200 text-red-800 px-3 py-1.5 rounded-full font-medium">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Éducation */}
+              {analyseCv.education && (
+                <div className="p-4 bg-white rounded-lg border-2 border-red-100">
+                  <p className="text-sm font-bold text-red-700 mb-3">🎓 Éducation</p>
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">{analyseCv.education}</p>
+                </div>
+              )}
+
+              {/* Langues */}
+              {analyseCv.langues && analyseCv.langues.length > 0 && (
+                <div className="p-4 bg-white rounded-lg border-2 border-red-100">
+                  <p className="text-sm font-bold text-red-700 mb-3">🗣️ Langues</p>
+                  <div className="flex flex-wrap gap-2">
+                    {analyseCv.langues.map((lang, idx) => (
+                      <span key={idx} className="text-xs bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full font-medium">
+                        {lang}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Projets */}
+              {analyseCv.projets && analyseCv.projets.length > 0 && (
+                <div className="p-4 bg-white rounded-lg border-2 border-red-100">
+                  <p className="text-sm font-bold text-red-700 mb-3">📁 Projets ({analyseCv.projets.length})</p>
+                  <div className="space-y-2">
+                    {analyseCv.projets.map((projet, idx) => (
+                      <div key={idx} className="p-2 bg-red-50 rounded text-sm text-gray-700">
+                        <p className="font-medium">▸ {typeof projet === 'string' ? projet : projet.title || JSON.stringify(projet)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Résumé extractif */}
+              {analyseCv.resume && (
+                <div className="p-4 bg-white rounded-lg border-2 border-red-100">
+                  <p className="text-sm font-bold text-red-700 mb-3">📝 Résumé Extractif</p>
+                  <p className="text-sm text-gray-700 italic leading-relaxed">{analyseCv.resume}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Résultats Analyse Lettre */}
+          {analyseLettre && (
+            <div className="p-5 bg-white rounded-lg border-2 border-blue-200">
+              <div className="flex items-center justify-between mb-4">
+                <h5 className="text-lg font-bold text-blue-700">📋 Analyse Lettre de Motivation</h5>
+                <span className="text-xs text-gray-500">{new Date(analyseLettre.date_analyse).toLocaleDateString('fr-FR')}</span>
+              </div>
+
+              {/* Note globale */}
+              <div className="mb-4 p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-blue-100 text-xs uppercase font-bold">Note Globale</p>
+                    <p className="text-sm opacity-90">Mention: {analyseLettre.mention}</p>
+                  </div>
+                  <div className="text-4xl font-black">{analyseLettre.note_globale}<span className="text-lg opacity-70">/20</span></div>
+                </div>
+              </div>
+
+              {/* 6 scores de dimension */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                {[
+                  { label: 'Clarté', val: analyseLettre.clarity_score, max: 4 },
+                  { label: 'Motivation', val: analyseLettre.motivation_score, max: 4 },
+                  { label: 'Personnalisation', val: analyseLettre.personalization_score, max: 4 },
+                  { label: 'Formalité', val: analyseLettre.formality_score, max: 4 },
+                  { label: 'Richesse lexicale', val: analyseLettre.lexical_richness_score, max: 4 },
+                  { label: 'Généricité', val: analyseLettre.genericity_score, max: 4 },
+                ].map((item, idx) => (
+                  <div key={idx} className="p-3 bg-blue-50 rounded border border-blue-100">
+                    <p className="text-xs text-gray-600 font-semibold">{item.label}</p>
+                    <div className="flex items-center justify-between mt-1">
+                      <div className="w-12 h-6 bg-blue-200 rounded overflow-hidden">
+                        <div
+                          className="h-full bg-blue-600 transition-all"
+                          style={{ width: `${(item.val / item.max) * 100}%` }}
+                        />
+                      </div>
+                      <span className="text-sm font-bold text-blue-700">{item.val}/{item.max}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Analyse de style */}
+              {analyseLettre.style_prediction && (
+                <div className="p-3 bg-blue-50 rounded border border-blue-100 mb-3">
+                  <p className="text-xs text-gray-500 font-semibold mb-2">STYLE DÉTECTÉ</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-bold text-blue-700">{analyseLettre.style_prediction_fr}</p>
+                      <p className="text-xs text-gray-600">{analyseLettre.style_description}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-gray-500">Confiance</p>
+                      <p className="text-lg font-bold text-blue-700">{(analyseLettre.style_confidence * 100).toFixed(0)}%</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Amélioration proposées */}
+              {analyseLettre.ameliorations && Object.keys(analyseLettre.ameliorations).length > 0 && (
+                <div className="p-3 bg-blue-50 rounded border border-blue-100">
+                  <p className="text-xs text-gray-500 font-semibold mb-2">POINTS À AMÉLIORER</p>
+                  <ul className="text-sm text-gray-700 space-y-1">
+                    {Object.entries(analyseLettre.ameliorations).map(([key, value]) => (
+                      <li key={key} className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-0.5">▸</span>
+                        <span>{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {!analyseCv && !analyseLettre && (
+            <div className="p-6 text-center bg-white rounded-lg border-2 border-dashed border-gray-200">
+              <p className="text-gray-500 text-sm mb-2">Aucune analyse réalisée pour ce candidat.</p>
+              <p className="text-xs text-gray-400">Cliquez sur les boutons ci-dessus pour analyser le CV et la lettre.</p>
+            </div>
+          )}
         </div>
 
         {/* Évaluation */}

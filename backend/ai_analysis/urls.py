@@ -18,4 +18,9 @@ urlpatterns = [
     # ── Analyse rapide (upload direct, pas de sauvegarde) ───────────────────
     path('analyser/lettre/', views.quick_analyze_lettre, name='ai-quick-lettre'),
     path('analyser/cv/',     views.quick_analyze_cv,     name='ai-quick-cv'),
+
+    # ── ALIASES pour le frontend (les mêmes vues) ────────────────────────────
+    path('analyse-lettre/', views.quick_analyze_lettre, name='ai-analyse-lettre'),
+    path('analyse-lettre-pdf/', views.quick_analyze_lettre, name='ai-analyse-lettre-pdf'),
+    path('analyse-cv/', views.quick_analyze_cv, name='ai-analyse-cv'),
 ]

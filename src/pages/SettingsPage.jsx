@@ -21,10 +21,10 @@ function SettingsPage() {
     confirmPassword: ''
   })
 
-  const [preferences, setPreferences] = useState({
-    emailNotifications: true,
-    theme: 'light'
-  })
+  // const [preferences, setPreferences] = useState({
+  //   emailNotifications: true,
+  //   theme: 'light'
+  // })
 
   const [activeTab, setActiveTab] = useState('profile')
   const [message, setMessage] = useState({ type: '', text: '' })
@@ -156,7 +156,7 @@ const handleSaveProfile = async (e) => {
               >
                 🔒 Sécurité
               </button>
-              <button
+              {/* <button
                 onClick={() => setActiveTab('preferences')}
                 className={`px-6 py-4 text-sm font-medium border-b-2 transition ${
                   activeTab === 'preferences'
@@ -165,7 +165,7 @@ const handleSaveProfile = async (e) => {
                 }`}
               >
                 ⚙️ Préférences
-              </button>
+              </button> */}
             </nav>
           </div>
 
@@ -309,7 +309,7 @@ const handleSaveProfile = async (e) => {
             )}
 
             {/* Onglet Préférences */}
-            {activeTab === 'preferences' && (
+            {/* {activeTab === 'preferences' && (
               <form onSubmit={handleSavePreferences} className="space-y-6">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 mb-4">
@@ -360,7 +360,7 @@ const handleSaveProfile = async (e) => {
                   </button>
                 </div>
               </form>
-            )}
+            )} */}
           </div>
         </div>
       </div>
