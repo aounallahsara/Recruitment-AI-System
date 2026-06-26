@@ -8,11 +8,6 @@ import traceback
 
 @api_view(['POST'])
 def chatbot_ask(request):
-    """
-    Endpoint pour le chatbot.
-    POST /api/chatbot/ask/
-    Body: {"question": "..."}
-    """
     try:
         # Récupérer la question
         question = request.data.get('question', '').strip()
@@ -21,15 +16,13 @@ def chatbot_ask(request):
             return Response(
                 {"error": "Question vide", "success": False},
                 status=status.HTTP_400_BAD_REQUEST
-            )
-        
+            ) 
         # Limiter la longueur
         if len(question) > 500:
             return Response(
                 {"error": "Question trop longue", "success": False},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        
         print(f"Question reçue : {question}")  # Debug
         
         # Rechercher le contexte

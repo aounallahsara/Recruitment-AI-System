@@ -95,7 +95,7 @@ _ml_v2_available = None
 _ML_V2_FEATURE_NAMES = [
     "burstiness", "repetition_ngram_3", "ratio_ponctuation",
     "avg_word_len", "ttr", "ratio_majuscules",
-    "longueur_mots", "n_phrases", "perplexite",
+    "longueur_mots", "n_phrases",
 ]
 
 

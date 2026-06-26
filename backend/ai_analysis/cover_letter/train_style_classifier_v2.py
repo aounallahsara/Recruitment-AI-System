@@ -79,7 +79,6 @@ FEATURE_NAMES = [
     "ratio_majuscules",
     "longueur_mots",
     "n_phrases",
-    "perplexite",
 ]
 
 

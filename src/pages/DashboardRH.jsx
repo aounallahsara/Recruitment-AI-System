@@ -66,7 +66,7 @@ function DashboardRH() {
         </div>
         <nav className="px-4">
           {/* MOINS D'OPTIONS que l'admin */}
-          {['Dashboard', 'All Candidates', 'Preselected'].map((item) => (
+          {['Dashboard'].map((item) => (
             <button
               key={item}
               onClick={() => setActiveMenu(item)}
@@ -87,7 +87,7 @@ function DashboardRH() {
             onClick={() => navigate('/analyse')}
             className="w-full text-left px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-1 flex items-center gap-2"
           >
-            <span>🔍</span> Analyse IA
+            Analyse IA
           </button>
         </div>
 

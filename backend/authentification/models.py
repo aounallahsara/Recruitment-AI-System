@@ -3,10 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    """
-    Modèle User personnalisé.
-    Étend le User Django standard avec un champ 'role'.
-    """
+  
 
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Administrateur'

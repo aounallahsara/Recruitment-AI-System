@@ -48,7 +48,7 @@ function EvaluationForm({ candidateId, existing, onSaved }) {
         onClick={() => setShowForm(!showForm)}
         className="text-blue-600 hover:text-blue-800 text-sm font-medium"
       >
-        {existing ? "✏️ Modifier l'évaluation" : '+ Ajouter une évaluation'}
+        {existing ? " Modifier l'évaluation" : '+ Ajouter une évaluation'}
       </button>
 
       {showForm && (
@@ -454,7 +454,7 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
 
         {/* ── ANALYSE IA ─────────────────────────────────── */}
         <div className="p-6 border-b bg-gradient-to-r from-purple-50 to-blue-50">
-          <h4 className="text-sm font-semibold text-gray-500 mb-4 uppercase">🤖 Analyse IA</h4>
+          <h4 className="text-sm font-semibold text-gray-500 mb-4 uppercase">Analyse IA</h4>
           
           {/* Boutons d'analyse */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -463,14 +463,14 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
               disabled={loadingAnalyseCv}
               className="flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 font-medium transition disabled:opacity-50 disabled:cursor-wait"
             >
-              {loadingAnalyseCv ? '⏳ Analyse CV...' : '📄 Analyser le CV'}
+              {loadingAnalyseCv ? '⏳ Analyse CV...' : ' Analyser le CV'}
             </button>
             <button
               onClick={handleAnalyzeLettre}
               disabled={loadingAnalyseLettre}
               className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium transition disabled:opacity-50 disabled:cursor-wait"
             >
-              {loadingAnalyseLettre ? '⏳ Analyse lettre...' : '📝 Analyser la lettre'}
+              {loadingAnalyseLettre ? '⏳ Analyse lettre...' : ' Analyser la lettre'}
             </button>
           </div>
 
@@ -479,7 +479,7 @@ function CandidateDetailsPage({ candidate, onBack, onUpdate, isAdmin }) {
             <div className="mb-6 space-y-4">
               <div className="p-5 bg-white rounded-lg border-2 border-red-200">
                 <div className="flex items-center justify-between mb-4">
-                  <h5 className="text-lg font-bold text-red-700">📊 Analyse CV</h5>
+                  <h5 className="text-lg font-bold text-red-700"> Analyse CV</h5>
                   <span className="text-xs text-gray-500">{new Date(analyseCv.date_analyse).toLocaleDateString('fr-FR')}</span>
                 </div>
                 

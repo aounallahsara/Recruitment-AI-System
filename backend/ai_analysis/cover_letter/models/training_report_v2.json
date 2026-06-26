@@ -2,14 +2,14 @@
   "version": "v2",
   "best_model": "RandomForest",
   "source_ia": "real_ai_letters_merged.json",
-  "n_samples": 914,
+  "n_samples": 1872,
   "classes": [
     "humain",
     "hybride",
     "ia"
   ],
   "class_dist": {
-    "humain": 300,
+    "humain": 1258,
     "hybride": 450,
     "ia": 164
   },
@@ -21,20 +21,19 @@
     "ttr",
     "ratio_majuscules",
     "longueur_mots",
-    "n_phrases",
-    "perplexite"
+    "n_phrases"
   ],
   "cv_results": {
     "LogisticRegression": {
-      "mean": 0.7023797478051577,
-      "std": 0.013163070724987147
+      "mean": 0.6112762394366549,
+      "std": 0.014149772288138136
     },
     "RandomForest": {
-      "mean": 0.9117492328863113,
-      "std": 0.028315133077542395
+      "mean": 0.9006326766580074,
+      "std": 0.013273667589388975
     }
   },
-  "f1_test": 0.9291,
+  "f1_test": 0.9166,
   "confusion_matrix": {
     "labels": [
       "humain",
@@ -43,19 +42,19 @@
     ],
     "matrix": [
       [
-        57,
-        2,
-        1
+        240,
+        9,
+        3
       ],
       [
         0,
-        88,
-        2
+        90,
+        0
       ],
       [
-        5,
-        0,
-        28
+        6,
+        1,
+        26
       ]
     ]
   },

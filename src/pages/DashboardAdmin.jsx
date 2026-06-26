@@ -125,7 +125,7 @@ function DashboardAdmin() {
             onClick={() => navigate('/analyse')}
             className="w-full text-left px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-1 flex items-center gap-2"
           >
-            <span>🔍</span> Analyse IA
+            <span></span> Analyse IA
           </button>
         </div>
 

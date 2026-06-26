@@ -22,8 +22,6 @@ def login_view(request):
             {'error': 'Username et password sont requis.'},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-
     user = authenticate(username=username, password=password)
     print(f"Tentative de connexion - Username: {username} | Password: {password}")
     if user is None:
@@ -31,17 +29,14 @@ def login_view(request):
             {'error': 'Identifiants incorrects.'},
             status=status.HTTP_401_UNAUTHORIZED
         )
-
     if not user.is_active:
         return Response(
             {'error': 'Compte désactivé.'},
             status=status.HTTP_401_UNAUTHORIZED
         )
-
     # Générer le token JWT
     refresh = RefreshToken.for_user(user)
 
-   
     return Response({
         'token': str(refresh.access_token),
         'user': {

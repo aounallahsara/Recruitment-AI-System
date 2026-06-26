@@ -1,17 +1,36 @@
 {
   "modele": "style_classifier_v2",
-  "n_test": 349,
+  "n_test": 365,
   "distribution": {
     "humain": 251,
     "hybride": 90,
-    "ia": 8
+    "ia": 24
   },
-  "f1_macro": 0.9387,
-  "accuracy": 0.9799,
+  "f1_macro": 0.9419,
+  "accuracy": 0.9699,
+  "cohen_kappa": 0.9356,
+  "mcc": 0.9361,
+  "log_loss": 0.157,
+  "auc_roc": {
+    "humain": 0.9964,
+    "hybride": 0.9993,
+    "ia": 0.9962,
+    "macro": 0.9973
+  },
   "f1_par_classe": {
-    "humain": 0.986,
+    "humain": 0.9779,
     "hybride": 0.973,
-    "ia": 0.8571
+    "ia": 0.875
+  },
+  "precision_par_classe": {
+    "humain": 0.9878,
+    "hybride": 0.9474,
+    "ia": 0.875
+  },
+  "recall_par_classe": {
+    "humain": 0.9681,
+    "hybride": 1.0,
+    "ia": 0.875
   },
   "confusion_matrix": {
     "labels": [
@@ -21,9 +40,9 @@
     ],
     "matrix": [
       [
-        246,
+        243,
         5,
-        0
+        3
       ],
       [
         0,
@@ -31,17 +50,87 @@
         0
       ],
       [
-        2,
+        3,
         0,
-        6
+        21
       ]
     ]
   },
-  "n_erreurs": 7,
-  "taux_erreur": 0.0201,
+  "confiance": {
+    "conf_correcte": 0.8878,
+    "conf_incorrecte": 0.6074
+  },
+  "ablation": [
+    {
+      "feature": "avg_word_len",
+      "f1_sans": 0.9404,
+      "chute": 0.0015
+    },
+    {
+      "feature": "ratio_ponctuation",
+      "f1_sans": 0.9455,
+      "chute": -0.0036
+    },
+    {
+      "feature": "burstiness",
+      "f1_sans": 0.9478,
+      "chute": -0.0058
+    },
+    {
+      "feature": "ttr",
+      "f1_sans": 0.9502,
+      "chute": -0.0083
+    },
+    {
+      "feature": "repetition_ngram_3",
+      "f1_sans": 0.9516,
+      "chute": -0.0097
+    },
+    {
+      "feature": "ratio_majuscules",
+      "f1_sans": 0.9552,
+      "chute": -0.0133
+    },
+    {
+      "feature": "n_phrases",
+      "f1_sans": 0.9552,
+      "chute": -0.0133
+    },
+    {
+      "feature": "longueur_mots",
+      "f1_sans": 0.9577,
+      "chute": -0.0157
+    }
+  ],
+  "courbe_apprentissage": {
+    "train_sizes": [
+      121,
+      219,
+      316,
+      414,
+      511,
+      609
+    ],
+    "train_f1": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9981458107650774,
+      0.9965745531551082
+    ],
+    "val_f1": [
+      0.5466969794107833,
+      0.5661430919798316,
+      0.5724153389631524,
+      0.5800393564019163,
+      0.6525384056543807,
+      0.9155392958896608
+    ]
+  },
   "comparaison_v1": {
     "RandomForest_cv_f1": 0.9979,
     "GradientBoosting_cv_f1": 0.9986,
-    "note": "CV sur données synthétiques + fuite de features (scoring.py == étiqueteur == features d'entrée). Pas généralisable."
+    "note": "CV sur données synthétiques + fuite features — pas généralisable."
   }
 }

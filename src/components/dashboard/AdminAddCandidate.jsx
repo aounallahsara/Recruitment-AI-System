@@ -55,7 +55,6 @@ function AdminAddCandidate({ onBack, onSuccess }) {
     'Béni Abbès', 'In Salah', 'In Guezzam', 'Touggourt', 'Djanet', 'El M\'Ghair',
     'El Meniaa'
   ]
-
   // Niveaux d'études
   const niveaux = [
     'Licence 1', 'Licence 2', 'Licence 3',
@@ -63,7 +62,6 @@ function AdminAddCandidate({ onBack, onSuccess }) {
     'Ingénieur1', 'Ingénieur2', 'Ingénieur3',
     'Ingénieur4', 'Ingénieur5', 
   ]
-
   // Durées de stage
   const durees = ['1 mois', '2 mois', '3 mois', '4 mois', '5 mois', '6 mois']
 

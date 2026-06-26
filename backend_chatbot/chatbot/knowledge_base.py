@@ -4,12 +4,12 @@ class KnowledgeBase:
     KNOWLEDGE = """
 === CANDIDATURES DE STAGES ===
 
- DOCUMENTS REQUIS (OBLIGATOIRES)
-Pour candidater, vous devez fournir 3 documents au format PDF :
+ DOCUMENTS REQUIS (2 OBLIGATOIRES)
+Pour candidater, vous devez fournir  3 documents au format PDF :
 1. CV (Curriculum Vitae)
 2. Lettre de motivation
-3. Relevé de notes
-Sans ces 3 documents, votre candidature ne sera pas traitée.
+3. Relevé de notes (optionnel mais recommandé)
+
 
  DURÉE DES STAGES
 - Minimum : 1 mois
@@ -26,7 +26,7 @@ Sans ces 3 documents, votre candidature ne sera pas traitée.
 - Moyenne recommandée : 12/20 (pas obligatoire)
 - Cohérence domaine d'études / thème de stage
 - Qualité de la lettre de motivation
-- Disponibilité
+- Disponibilité du Service d'accueil
 
  STATUTS DE CANDIDATURE
 -

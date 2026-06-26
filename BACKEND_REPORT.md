@@ -23,6 +23,24 @@ Fichier : `backend/authentification/models.py`
   - `rh`
 - Le modèle réutilise tous les champs standards de Django (`username`, `email`, `password`, `first_name`, etc.).
 
+Création d'un user avec le shell : 
+from authentification.models import User
+
+rh2 = User.objects.create_user(
+    username='rh_2',
+    password='rh022026',
+    email='rh@recrutementhas.dz',
+    first_name='Équipe',
+    last_name='RH',
+    role='rh'
+)
+rh2.save()
+print(f"✅ Compte RH créé : {rh2.username}")
+
+for u in User.objects.all():
+    print(f"  → {u.username} | {u.role} | {u.email}")
+
+exit()
 ### 2.2 Vue de connexion
 Fichier : `backend/authentification/views.py`
 Route : `POST /api/auth/login/`
